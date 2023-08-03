@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +26,13 @@
 	<!-- WebP Safari Support -->
 	<script src="https://unpkg.com/webp-hero@0.0.0-dev.27/dist-cjs/polyfills.js"></script>
 	<script src="https://unpkg.com/webp-hero@0.0.0-dev.27/dist-cjs/webp-hero.bundle.js"></script>
+
+	<style>
+		.hide-me {
+			display: none;
+
+		}
+	</style>
 
 </head>
 
@@ -357,7 +362,7 @@
 
 										<div class="form-group date-time-picker label-floating">
 											<label class="control-label">Your Birthday</label>
-											<input type="date" name="birthday"/>
+											<input type="date" name="birthday" />
 											<span class="input-group-addon">
 												<svg class="olymp-calendar-icon">
 													<use xlink:href="#olymp-calendar-icon"></use>
@@ -390,16 +395,17 @@
 
 						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 							<div class="title h6">Login to your Account</div>
-							<form class="content">
+							<form class="content" id="loginForm">
+								<p id="loginError" class="alert alert-danger hide-me" style="font-size: 14px !important;color:#FF0F47;position: absolute;top: 40px;right: 10px;">Password or Email Wrong</p>
 								<div class="row">
 									<div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
 										<div class="form-group label-floating">
 											<label class="control-label">Your Email</label>
-											<input class="form-control" placeholder="" type="email">
+											<input class="form-control" placeholder="" type="email" name="email">
 										</div>
 										<div class="form-group label-floating">
 											<label class="control-label">Your Password</label>
-											<input class="form-control" placeholder="" type="password">
+											<input class="form-control" placeholder="" type="password" name="password">
 										</div>
 
 										<div class="remember">
@@ -413,7 +419,7 @@
 											<a href="#" class="forgot" data-bs-toggle="modal" data-bs-target="#restore-password">Forgot my Password</a>
 										</div>
 
-										<a href="#" class="btn btn-lg btn-primary full-width">Login</a>
+										<button type="submit" class="btn btn-lg btn-primary full-width">Login</button>
 
 										<div class="or"></div>
 
@@ -538,7 +544,21 @@
 	<!-- SVG icons loader -->
 	<script src="js/svg-loader.js"></script>
 	<!-- /SVG icons loader -->
-
+	<script>
+		jQuery(document).ready(function($) {
+			$("#loginForm").on("submit", function(e) {
+				e.preventDefault();
+				$.post("checklogin.php", $(this).serialize()).done(function(data) {
+					var result = $.trim(data);
+					if (result == "ok") {
+						window.location.href = "profile";
+					} else {
+						$("#loginError").show();
+					}
+				});
+			});
+		});
+	</script>
 </body>
 
 </html>

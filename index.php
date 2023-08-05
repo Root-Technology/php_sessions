@@ -396,7 +396,7 @@
 						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 							<div class="title h6">Login to your Account</div>
 							<form class="content" id="loginForm">
-								<p id="loginError" class="alert alert-danger hide-me" style="font-size: 14px !important;color:#FF0F47;position: absolute;top: 40px;right: 10px;">Password or Email Wrong</p>
+								<p id="loginError" class="alert alert-danger hide-me" style="font-size: 14px !important;color:#FF0F47;top: -10px;">Password or Email Wrong</p>
 								<div class="row">
 									<div class="col col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
 										<div class="form-group label-floating">

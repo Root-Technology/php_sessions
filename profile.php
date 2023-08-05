@@ -90,7 +90,8 @@ require_once __DIR__ . '/partials/_validations.php';
 				<div class="ui-block">
 					<div class="top-header">
 						<div class="top-header-thumb">
-
+							<!-- This image need to be remove add update it to the css  -->
+							<img loading="lazy" src="./uploads/header/<?php echo $headerimage; ?>" alt="author" width="450" height="1658.5">
 						</div>
 						<div class="profile-section">
 							<div class="row">
@@ -168,21 +169,24 @@ require_once __DIR__ . '/partials/_validations.php';
 						</div>
 						<div class="top-header-author">
 							<a href="02-ProfilePage.html" class="author-thumb">
+
 								<?php
-								if($profileimage != NULL){ ?>
+								if ($profileimage != NULL) { ?>
 									<img loading="lazy" src="./uploads/profile/<?php echo $profileimage; ?>" alt="author" width="124" height="124">
+
+									<?php } else {
+									if ($gender == 'Male') { ?>
+										<img loading="lazy" src="https://i.ibb.co/854VS2Z/avatar5.png" alt="authorM" width="124" height="124">
+									<?php } elseif ($gender == 'Female') { ?>
+										<img loading="lazy" src="https://i.ibb.co/3kgHdxm/avatar2.png" alt="authorF" width="124" height="124">
 								<?php }
-								else{
-								if ($gender == 'Male') { ?>
-									<img loading="lazy" src="https://i.ibb.co/854VS2Z/avatar5.png" alt="authorM" width="124" height="124">
-								<?php } elseif ($gender == 'Female') { ?>
-									<img loading="lazy" src="https://i.ibb.co/3kgHdxm/avatar2.png" alt="authorF" width="124" height="124">
-								<?php } } ?>
+								} ?>
 
 							</a>
 							<div class="author-content">
 
 								<a href="02-ProfilePage.html" class="h4 author-name"><?php echo $name . ' ' . $lastname; ?> </a>
+
 								<div class="country">San Francisco, CA</div>
 							</div>
 						</div>
@@ -1871,19 +1875,23 @@ require_once __DIR__ . '/partials/_validations.php';
 						<form action="update-profile-image.php" method="post" enctype="multipart/form-data">
 							<input type="file" name="profile_image" />
 							<br />
-							<button type="submit" class="btn btn-md-2 btn-primary">Update</button>
+							<button type="submit" class="btn btn-md-2 btn-primary">Update Profile</button>
 						</form>
 
 					</a>
 
-					<a href="#" class="upload-photo-item" data-bs-toggle="modal" data-bs-target="#choose-from-my-photo">
+					<a href="#" class="upload-photo-item">
 
 						<svg class="olymp-photos-icon">
 							<use xlink:href="#olymp-photos-icon"></use>
 						</svg>
-
-						<h6>Choose from My Photos</h6>
-						<span>Choose from your uploaded photos</span>
+						<h6>Upload Header Photo</h6>
+						<br />
+						<form action="update-header-image.php" method="post" enctype="multipart/form-data">
+							<input type="file" name="header_image" />
+							<br />
+							<button type="submit" class="btn btn-md-2 btn-primary">Update Header</button>
+						</form>
 					</a>
 				</div>
 			</div>
@@ -1926,158 +1934,158 @@ require_once __DIR__ . '/partials/_validations.php';
 					</ul>
 				</div>
 
-				<div class="modal-body">
+				<!-- <div class="modal-body">
 					<!-- Tab panes -->
-					<div class="tab-content">
-						<div class="tab-pane fade active show" id="home" role="tabpanel" aria-expanded="true">
+				<div class="tab-content">
+					<div class="tab-pane fade active show" id="home" role="tabpanel" aria-expanded="true">
 
-							<div class="choose-photo-item">
-								<div class="radio">
-									<label class="custom-radio">
-										<img loading="lazy" src="img/choose-photo1.webp" alt="photo" width="247" height="166">
-										<input type="radio" name="optionsRadios">
-									</label>
-								</div>
+						<div class="choose-photo-item">
+							<div class="radio">
+								<label class="custom-radio">
+									<img loading="lazy" src="img/choose-photo1.webp" alt="photo" width="247" height="166">
+									<input type="radio" name="optionsRadios">
+								</label>
 							</div>
-							<div class="choose-photo-item">
-								<div class="radio">
-									<label class="custom-radio">
-										<img loading="lazy" src="img/choose-photo2.webp" alt="photo" width="247" height="166">
-										<input type="radio" name="optionsRadios">
-									</label>
-								</div>
-							</div>
-							<div class="choose-photo-item">
-								<div class="radio">
-									<label class="custom-radio">
-										<img loading="lazy" src="img/choose-photo3.webp" alt="photo" width="247" height="166">
-										<input type="radio" name="optionsRadios">
-									</label>
-								</div>
-							</div>
-
-							<div class="choose-photo-item">
-								<div class="radio">
-									<label class="custom-radio">
-										<img loading="lazy" src="img/choose-photo4.webp" alt="photo" width="247" height="166">
-										<input type="radio" name="optionsRadios">
-									</label>
-								</div>
-							</div>
-							<div class="choose-photo-item">
-								<div class="radio">
-									<label class="custom-radio">
-										<img loading="lazy" src="img/choose-photo5.webp" alt="photo" width="247" height="166">
-										<input type="radio" name="optionsRadios">
-									</label>
-								</div>
-							</div>
-							<div class="choose-photo-item">
-								<div class="radio">
-									<label class="custom-radio">
-										<img loading="lazy" src="img/choose-photo6.webp" alt="photo" width="247" height="166">
-										<input type="radio" name="optionsRadios">
-									</label>
-								</div>
-							</div>
-
-							<div class="choose-photo-item">
-								<div class="radio">
-									<label class="custom-radio">
-										<img loading="lazy" src="img/choose-photo7.webp" alt="photo" width="247" height="166">
-										<input type="radio" name="optionsRadios">
-									</label>
-								</div>
-							</div>
-							<div class="choose-photo-item">
-								<div class="radio">
-									<label class="custom-radio">
-										<img loading="lazy" src="img/choose-photo8.webp" alt="photo" width="247" height="166">
-										<input type="radio" name="optionsRadios">
-									</label>
-								</div>
-							</div>
-							<div class="choose-photo-item">
-								<div class="radio">
-									<label class="custom-radio">
-										<img loading="lazy" src="img/choose-photo9.webp" alt="photo" width="247" height="166">
-										<input type="radio" name="optionsRadios">
-									</label>
-								</div>
-							</div>
-
-
-							<a href="#" class="btn btn-secondary btn-lg btn--half-width">Cancel</a>
-							<a href="#" class="btn btn-primary btn-lg btn--half-width">Confirm Photo</a>
-
 						</div>
-						<div class="tab-pane fade" id="profile" role="tabpanel" aria-expanded="false">
-
-							<div class="choose-photo-item">
-								<figure>
-									<img loading="lazy" src="img/choose-photo10.webp" alt="photo" width="225" height="180">
-									<figcaption>
-										<a href="#">South America Vacations</a>
-										<span>Last Added: 2 hours ago</span>
-									</figcaption>
-								</figure>
+						<div class="choose-photo-item">
+							<div class="radio">
+								<label class="custom-radio">
+									<img loading="lazy" src="img/choose-photo2.webp" alt="photo" width="247" height="166">
+									<input type="radio" name="optionsRadios">
+								</label>
 							</div>
-							<div class="choose-photo-item">
-								<figure>
-									<img loading="lazy" src="img/choose-photo11.webp" alt="photo" width="225" height="180">
-									<figcaption>
-										<a href="#">Photoshoot Summer 2016</a>
-										<span>Last Added: 5 weeks ago</span>
-									</figcaption>
-								</figure>
-							</div>
-							<div class="choose-photo-item">
-								<figure>
-									<img loading="lazy" src="img/choose-photo12.webp" alt="photo" width="225" height="180">
-									<figcaption>
-										<a href="#">Amazing Street Food</a>
-										<span>Last Added: 6 mins ago</span>
-									</figcaption>
-								</figure>
-							</div>
-
-							<div class="choose-photo-item">
-								<figure>
-									<img loading="lazy" src="img/choose-photo13.webp" alt="photo" width="224" height="179">
-									<figcaption>
-										<a href="#">Graffity & Street Art</a>
-										<span>Last Added: 16 hours ago</span>
-									</figcaption>
-								</figure>
-							</div>
-							<div class="choose-photo-item">
-								<figure>
-									<img loading="lazy" src="img/choose-photo14.webp" alt="photo" width="225" height="180">
-									<figcaption>
-										<a href="#">Amazing Landscapes</a>
-										<span>Last Added: 13 mins ago</span>
-									</figcaption>
-								</figure>
-							</div>
-							<div class="choose-photo-item">
-								<figure>
-									<img loading="lazy" src="img/choose-photo15.webp" alt="photo" width="225" height="180">
-									<figcaption>
-										<a href="#">The Majestic Canyon</a>
-										<span>Last Added: 57 mins ago</span>
-									</figcaption>
-								</figure>
-							</div>
-
-
-							<a href="#" class="btn btn-secondary btn-lg btn--half-width">Cancel</a>
-							<a href="#" class="btn btn-primary btn-lg disabled btn--half-width">Confirm Photo</a>
 						</div>
+						<div class="choose-photo-item">
+							<div class="radio">
+								<label class="custom-radio">
+									<img loading="lazy" src="img/choose-photo3.webp" alt="photo" width="247" height="166">
+									<input type="radio" name="optionsRadios">
+								</label>
+							</div>
+						</div>
+
+						<div class="choose-photo-item">
+							<div class="radio">
+								<label class="custom-radio">
+									<img loading="lazy" src="img/choose-photo4.webp" alt="photo" width="247" height="166">
+									<input type="radio" name="optionsRadios">
+								</label>
+							</div>
+						</div>
+						<div class="choose-photo-item">
+							<div class="radio">
+								<label class="custom-radio">
+									<img loading="lazy" src="img/choose-photo5.webp" alt="photo" width="247" height="166">
+									<input type="radio" name="optionsRadios">
+								</label>
+							</div>
+						</div>
+						<div class="choose-photo-item">
+							<div class="radio">
+								<label class="custom-radio">
+									<img loading="lazy" src="img/choose-photo6.webp" alt="photo" width="247" height="166">
+									<input type="radio" name="optionsRadios">
+								</label>
+							</div>
+						</div>
+
+						<div class="choose-photo-item">
+							<div class="radio">
+								<label class="custom-radio">
+									<img loading="lazy" src="img/choose-photo7.webp" alt="photo" width="247" height="166">
+									<input type="radio" name="optionsRadios">
+								</label>
+							</div>
+						</div>
+						<div class="choose-photo-item">
+							<div class="radio">
+								<label class="custom-radio">
+									<img loading="lazy" src="img/choose-photo8.webp" alt="photo" width="247" height="166">
+									<input type="radio" name="optionsRadios">
+								</label>
+							</div>
+						</div>
+						<div class="choose-photo-item">
+							<div class="radio">
+								<label class="custom-radio">
+									<img loading="lazy" src="img/choose-photo9.webp" alt="photo" width="247" height="166">
+									<input type="radio" name="optionsRadios">
+								</label>
+							</div>
+						</div>
+
+
+						<a href="#" class="btn btn-secondary btn-lg btn--half-width">Cancel</a>
+						<a href="#" class="btn btn-primary btn-lg btn--half-width">Confirm Photo</a>
+
+					</div>
+					<div class="tab-pane fade" id="profile" role="tabpanel" aria-expanded="false">
+
+						<div class="choose-photo-item">
+							<figure>
+								<img loading="lazy" src="img/choose-photo10.webp" alt="photo" width="225" height="180">
+								<figcaption>
+									<a href="#">South America Vacations</a>
+									<span>Last Added: 2 hours ago</span>
+								</figcaption>
+							</figure>
+						</div>
+						<div class="choose-photo-item">
+							<figure>
+								<img loading="lazy" src="img/choose-photo11.webp" alt="photo" width="225" height="180">
+								<figcaption>
+									<a href="#">Photoshoot Summer 2016</a>
+									<span>Last Added: 5 weeks ago</span>
+								</figcaption>
+							</figure>
+						</div>
+						<div class="choose-photo-item">
+							<figure>
+								<img loading="lazy" src="img/choose-photo12.webp" alt="photo" width="225" height="180">
+								<figcaption>
+									<a href="#">Amazing Street Food</a>
+									<span>Last Added: 6 mins ago</span>
+								</figcaption>
+							</figure>
+						</div>
+
+						<div class="choose-photo-item">
+							<figure>
+								<img loading="lazy" src="img/choose-photo13.webp" alt="photo" width="224" height="179">
+								<figcaption>
+									<a href="#">Graffity & Street Art</a>
+									<span>Last Added: 16 hours ago</span>
+								</figcaption>
+							</figure>
+						</div>
+						<div class="choose-photo-item">
+							<figure>
+								<img loading="lazy" src="img/choose-photo14.webp" alt="photo" width="225" height="180">
+								<figcaption>
+									<a href="#">Amazing Landscapes</a>
+									<span>Last Added: 13 mins ago</span>
+								</figcaption>
+							</figure>
+						</div>
+						<div class="choose-photo-item">
+							<figure>
+								<img loading="lazy" src="img/choose-photo15.webp" alt="photo" width="225" height="180">
+								<figcaption>
+									<a href="#">The Majestic Canyon</a>
+									<span>Last Added: 57 mins ago</span>
+								</figcaption>
+							</figure>
+						</div>
+
+
+						<a href="#" class="btn btn-secondary btn-lg btn--half-width">Cancel</a>
+						<a href="#" class="btn btn-primary btn-lg disabled btn--half-width">Confirm Photo</a>
 					</div>
 				</div>
-			</div>
-
+			</div> -->
 		</div>
+
+	</div>
 	</div>
 
 	<!-- ... end Window-popup Choose from my Photo -->

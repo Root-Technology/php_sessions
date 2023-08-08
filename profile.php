@@ -211,10 +211,10 @@ require_once __DIR__ . '/partials/_validations.php';
 						<article class="hentry post">
 
 							<div class="post__author author vcard inline-items">
-								<img loading="lazy" src="img/author-page.webp" width="36" height="36" alt="author">
+								<img loading="lazy" src="./uploads/profile/<?php echo $profileimage; ?>" width="26" height="26" alt="author">
 
 								<div class="author-date">
-									<a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a>
+									<a class="h6 post__author-name fn" href="02-ProfilePage.html"><?php echo $name . ' ' . $lastname; ?></a>
 									<div class="post__date">
 										<time class="published" datetime="2017-03-24T18:18">
 											19 hours ago
@@ -351,10 +351,12 @@ require_once __DIR__ . '/partials/_validations.php';
 						<article class="hentry post video">
 
 							<div class="post__author author vcard inline-items">
-								<img loading="lazy" src="img/author-page.webp" width="36" height="36" alt="author">
+								<img loading="lazy" src="./uploads/profile/<?php echo $profileimage; ?>" width="36" height="36" alt="author">
 
 								<div class="author-date">
-									<a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a> shared a
+									<a class="h6 post__author-name fn" href="02-ProfilePage.html"><?php echo $name . ' ' . $lastname; ?>
+									</a>
+									shared a
 									<a href="#">link</a>
 									<div class="post__date">
 										<time class="published" datetime="2017-03-24T18:18">
@@ -476,10 +478,10 @@ require_once __DIR__ . '/partials/_validations.php';
 						<article class="hentry post">
 
 							<div class="post__author author vcard inline-items">
-								<img loading="lazy" src="img/author-page.webp" width="36" height="36" alt="author">
+								<img loading="lazy" src="./uploads/profile/<?php echo $profileimage; ?>" width="36" height="36" alt="author">
 
 								<div class="author-date">
-									<a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a>
+									<a class="h6 post__author-name fn" href="02-ProfilePage.html"><?php echo $name . ' ' . $lastname; ?></a>
 									<div class="post__date">
 										<time class="published" datetime="2017-03-24T18:18">
 											2 hours ago
@@ -785,10 +787,10 @@ require_once __DIR__ . '/partials/_validations.php';
 						<article class="hentry post has-post-thumbnail shared-photo">
 
 							<div class="post__author author vcard inline-items">
-								<img loading="lazy" src="img/author-page.webp" width="36" height="36" alt="author">
+								<img loading="lazy" src="./uploads/profile/<?php echo $profileimage; ?>" width="36" height="36" alt="author">
 
 								<div class="author-date">
-									<a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a> shared
+									<a class="h6 post__author-name fn" href="02-ProfilePage.html"><?php echo $name . ' ' . $lastname; ?></a> shared
 									<a href="#">Diana Jameson</a>’s <a href="#">photo</a>
 									<div class="post__date">
 										<time class="published" datetime="2017-03-24T18:18">

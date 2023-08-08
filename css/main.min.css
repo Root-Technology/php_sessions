@@ -514,13 +514,13 @@ ul {
 }
 
 .top-header.top-header-favorit .top-header-thumb {
-    background-image: url(../img/top-header2.webp)
+    background-image: url('./uploads/header/<?php echo $headerimage; ?>') !important;
 }
 
 .top-header.top-header-favorit .top-header-author {
     transform: translate(0);
     left: 100px;
-    bottom: -40px;
+    bottom: -40px; 
     z-index: 5;
     max-width: unset
 }
@@ -551,7 +551,7 @@ ul {
 .top-header-thumb {
     border-radius: 5px 5px 0 0;
     height: 300px;
-    background-image: url(../img/top-header1.webp);
+    background-image: url('./uploads/header/<?php echo $headerimage; ?>') !important;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

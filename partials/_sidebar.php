@@ -245,7 +245,7 @@
                     </div>
                     <a href="02-ProfilePage.html" class="author-name fn">
                         <div class="author-title">
-                            James Spiegel
+                            <?php echo $name . ' ' . $lastname; ?>
                             <svg class="olymp-dropdown-arrow-icon">
                                 <use xlink:href="#olymp-dropdown-arrow-icon"></use>
                             </svg>

@@ -440,7 +440,7 @@
 
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
-                    <img alt="author" src="img/author-page.webp" width="36" height="36" class="avatar">
+                    <img alt="author" src="./uploads/profile/<?php echo $profileimage; ?>" width="36" height="36" class="avatar">
                     <span class="icon-status online"></span>
                     <div class="more-dropdown more-with-triangle">
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -469,7 +469,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="logout.php">
                                         <svg class="olymp-logout-icon">
                                             <use xlink:href="#olymp-logout-icon"></use>
                                         </svg>
@@ -557,7 +557,7 @@
                 </div>
                 <a href="02-ProfilePage.html" class="author-name fn">
                     <div class="author-title">
-                        James Spiegel
+                        <?php echo $name . ' ' . $lastname; ?>
                         <svg class="olymp-dropdown-arrow-icon">
                             <use xlink:href="#olymp-dropdown-arrow-icon"></use>
                         </svg>

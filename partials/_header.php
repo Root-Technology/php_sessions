@@ -450,7 +450,7 @@
 
                             <ul class="account-settings">
                                 <li>
-                                    <a href="29-YourAccount-AccountSettings.html">
+                                    <a href="user-profile.php">
 
                                         <svg class="olymp-menu-icon">
                                             <use xlink:href="#olymp-menu-icon"></use>

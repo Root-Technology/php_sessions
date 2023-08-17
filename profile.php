@@ -1,7 +1,5 @@
 <?php
-
 require_once __DIR__ . '/partials/_validations.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -89,9 +87,8 @@ require_once __DIR__ . '/partials/_validations.php';
 			<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<div class="ui-block">
 					<div class="top-header">
-						<div class="top-header-thumb">
-							<!-- This image need to be remove add update it to the css  -->
-							<img loading="lazy" src="./uploads/header/<?php echo $headerimage; ?>" alt="author" width="450" height="1658.5">
+						<div class="top-header-thumb" style="background-image: url('uploads/header/<?php echo $headerimage; ?>');">
+							
 						</div>
 						<div class="profile-section">
 							<div class="row">

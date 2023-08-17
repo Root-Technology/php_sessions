@@ -551,7 +551,6 @@ ul {
 .top-header-thumb {
     border-radius: 5px 5px 0 0;
     height: 300px;
-    background-image: url('./uploads/header/<?php echo $headerimage; ?>') !important;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

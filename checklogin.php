@@ -21,11 +21,11 @@ if (isset($_POST)) {
         } else {
             // $_SESSION["message"] = "Wrong Creds";
             // header("location: ../adminlogin.php");
-            echo "error";
+            echo "error 1";
         }
     } else {
         // $_SESSION["message"] = "Wrongs Creds or Account Desactivated";
         // header("location: ../adminlogin.php");
-        echo "error";
+        echo "error 2";
     }
 }

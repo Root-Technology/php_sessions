@@ -16,25 +16,25 @@ if (!empty($_POST)) {
     $stmt->execute();
     $result = $stmt->get_result();
 
-        if ($result->num_rows > 0) {
-            $_SESSION['errorMessage'] = "Email already exists";
-            header("Location: index");
+    if ($result->num_rows > 0) {
+        $_SESSION['errorMessage'] = "Email already exists";
+        header("Location: index");
+        exit();
+    } else {
+
+        $stmt = $conn->prepare("INSERT INTO users(name, last_name, email, password, birthday, gender) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssss", $name, $last_name, $email, $password, $birthday, $gender);
+
+        if ($stmt->execute()) {
+            $id_user = $stmt->insert_id;
+            $_SESSION['successMessage'] = "Account registered successfully";
+            $_SESSION['id_user'] = $id_user;
+            header("Location: profile");
             exit();
         } else {
-           
-            $stmt = $conn->prepare("INSERT INTO users(name, last_name, email, password, birthday, gender) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssss", $name, $last_name, $email, $password, $birthday, $gender);
-
-            if ($stmt->execute()) {
-                $id_user = $stmt->insert_id;
-                $_SESSION['successMessage'] = "Account registered successfully";
-                $_SESSION['id_user'] = $id_user;
-                header("Location: profile");
-                exit();
-            } else {
-                $_SESSION['errorMessage'] = "Error registering user";
-                header("Location: xx");
-                exit();
-            }
+            $_SESSION['errorMessage'] = "Error registering user";
+            header("Location: xx");
+            exit();
         }
     }
+}

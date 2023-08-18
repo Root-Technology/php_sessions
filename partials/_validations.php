@@ -26,3 +26,32 @@ if ($result->num_rows > 0) {
         $gender =  $row['gender'];
     }
 }
+
+function validationPostImage($image_data){
+    $response = array();
+    $response['status']= true;
+
+        if(!$image_data['name']){
+            $response['msg']='no image is selected';
+            $response['stastus']=false;
+            $response['field']='post_img';
+
+        }
+        if($image_data['name']){
+            $image = basename($image_data['name']);
+            $type = strtolower(pathinfo($image,PATHINFO_EXTENSION));
+            $size = $image_data['size']/1000;
+
+            if($type!='jpg' && $type!='jpeg' && $type!='png'){
+                $response['msg']="invalid file type";
+                $response['statu']= false;
+                $response['field'] ='profile';
+            }
+            if($size>1000){
+                $response['msg'] ="upload image less then 1 mb";
+                $response['statu']= false;
+                $response['field'] ='profile';
+            }
+        }
+        return $response ;
+}

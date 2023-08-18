@@ -88,7 +88,7 @@ require_once __DIR__ . '/partials/_validations.php';
 				<div class="ui-block">
 					<div class="top-header">
 						<div class="top-header-thumb" style="background-image: url('uploads/header/<?php echo $headerimage; ?>');">
-							
+
 						</div>
 						<div class="profile-section">
 							<div class="row">
@@ -145,6 +145,30 @@ require_once __DIR__ . '/partials/_validations.php';
 									</svg>
 								</a>
 
+								<!-- New post -->
+								<div class="btn btn-control bg-primary more">
+									<svg class="olymp-settings-icon">
+										<use xlink:href="#olymp-plus-icon"></use>
+									</svg>
+
+									<ul class="more-dropdown more-with-triangle triangle-bottom-right">
+										<li>
+											<a href="#" data-bs-toggle="modal" data-bs-target="#add-new-post">Update Profile Photo</a>
+										</li>
+										<li>
+											<a href="#" data-bs-toggle="modal" data-bs-target="#update-header-photo">Update Header Photo</a>
+										</li>
+										<li>
+											<a href="#" data-bs-toggle="modal" data-bs-target="#update-header-photo">New Post</a>
+										</li>
+										<li>
+											<a href="29-YourAccount-AccountSettings.html">Account Settings</a>
+										</li>
+									</ul>
+								</div>
+
+								<!-- New post -->
+
 								<div class="btn btn-control bg-primary more">
 									<svg class="olymp-settings-icon">
 										<use xlink:href="#olymp-settings-icon"></use>
@@ -157,6 +181,7 @@ require_once __DIR__ . '/partials/_validations.php';
 										<li>
 											<a href="#" data-bs-toggle="modal" data-bs-target="#update-header-photo">Update Header Photo</a>
 										</li>
+
 										<li>
 											<a href="29-YourAccount-AccountSettings.html">Account Settings</a>
 										</li>
@@ -1900,6 +1925,113 @@ require_once __DIR__ . '/partials/_validations.php';
 
 	<!-- ... end Window-popup Update Header Photo -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- Window-popup add post -->
+
+	<div class="modal fade" id="add-new-post" tabindex="-1" role="dialog" aria-labelledby="update-header-photo" aria-hidden="true">
+		<div class="modal-dialog window-popup update-header-photo" role="document">
+			<div class="modal-content">
+				<a href="#" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">
+					<svg class="olymp-close-icon">
+						<use xlink:href="#olymp-close-icon"></use>
+					</svg>
+				</a>
+
+				<div class="modal-header">
+					<h6 class="title">New post</h6>
+				</div>
+
+				<div class="">
+					<a href="#" class="upload-photo-item-1">
+						<svg class="olymp-computer-icon">
+							<use xlink:href="#olymp-computer-icon"></use>
+						</svg>
+
+						<h6>Upload Photo</h6>
+						<br />
+
+						<img src="" style="display: none;" id="post_img">
+						<form action="./create-post.php?addpost" method="post" enctype="multipart/form-data">
+							<input type="file" name="" id="select_post_img" name="image_post"/>
+							<br />
+							
+							<textarea name="description_post"></textarea>
+							<br />
+							<button type="submit" class="btn btn-md-2 btn-primary">Update Profile</button>
+						</form>
+
+					</a>
+
+					<!-- <a href="#" class="upload-photo-item">
+
+						<svg class="olymp-photos-icon">
+							<use xlink:href="#olymp-photos-icon"></use>
+						</svg>
+						<h6>Upload Header Photo</h6>
+						<br />
+						<form action="update-header-image.php" method="post" enctype="multipart/form-data">
+							<input type="file" name="header_image" />
+							<br />
+							<button type="submit" class="btn btn-md-2 btn-primary">Update Header</button>
+						</form>
+					</a> -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- ... end Window-popup Update Header Photo -->
+
+
+
+
+
+
 	<!-- Window-popup Choose from my Photo -->
 
 	<div class="modal fade" id="choose-from-my-photo" tabindex="-1" role="dialog" aria-labelledby="choose-from-my-photo" aria-hidden="true">
@@ -2683,6 +2815,8 @@ require_once __DIR__ . '/partials/_validations.php';
 	<!-- SVG icons loader -->
 	<script src="js/svg-loader.js"></script>
 	<!-- /SVG icons loader -->
+
+	<script src="js/post-img.js?v<?=time()?>"></script>
 
 </body>
 

@@ -96,12 +96,9 @@ require_once __DIR__ . '/partials/_validations.php';
             <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="ui-block">
                     <div class="top-header">
-                        <div class="top-header-thumb">
-                            <?php
-								if($profileimage != NULL){ ?>
-                            <img loading="lazy" src="./uploads/profile/<?php echo $profileimage; ?>" alt="author"
-                                width="124" height="124">
-                            <?php }  ?>
+                        <div class="top-header-thumb"
+                            style=" background-image: url('./uploads/profile/<?php echo $coverimage; ?>')">
+
                         </div>
                         <div class="profile-section">
                             <div class="row">

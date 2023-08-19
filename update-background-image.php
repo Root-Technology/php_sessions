@@ -35,7 +35,7 @@ if(isset($_POST)){
         exit();
     }
 
-    $sql = "UPDATE users SET profile_image='$file' WHERE id_user='$id_user' ";
+    $sql = "UPDATE users SET cover_image='$file' WHERE id_user='$id_user' ";
 
     if($conn->query($sql)=== TRUE){
         header("Location: profile");

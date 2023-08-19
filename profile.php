@@ -89,7 +89,7 @@ require_once __DIR__ . '/partials/_validations.php';
 			<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<div class="ui-block">
 					<div class="top-header">
-						<div class="top-header-thumb">
+						<div class="top-header-thumb" style="background-image: url('./uploads/profile/<?php echo $profileimage; ?>');">
 
 						</div>
 						<div class="profile-section">
@@ -169,15 +169,15 @@ require_once __DIR__ . '/partials/_validations.php';
 						<div class="top-header-author">
 							<a href="02-ProfilePage.html" class="author-thumb">
 								<?php
-								if($profileimage != NULL){ ?>
+								if ($profileimage != NULL) { ?>
 									<img loading="lazy" src="./uploads/profile/<?php echo $profileimage; ?>" alt="author" width="124" height="124">
+									<?php } else {
+									if ($gender == 'Male') { ?>
+										<img loading="lazy" src="https://i.ibb.co/854VS2Z/avatar5.png" alt="authorM" width="124" height="124">
+									<?php } elseif ($gender == 'Female') { ?>
+										<img loading="lazy" src="https://i.ibb.co/3kgHdxm/avatar2.png" alt="authorF" width="124" height="124">
 								<?php }
-								else{
-								if ($gender == 'Male') { ?>
-									<img loading="lazy" src="https://i.ibb.co/854VS2Z/avatar5.png" alt="authorM" width="124" height="124">
-								<?php } elseif ($gender == 'Female') { ?>
-									<img loading="lazy" src="https://i.ibb.co/3kgHdxm/avatar2.png" alt="authorF" width="124" height="124">
-								<?php } } ?>
+								} ?>
 
 							</a>
 							<div class="author-content">

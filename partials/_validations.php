@@ -27,31 +27,26 @@ if ($result->num_rows > 0) {
     }
 }
 
-function validationPostImage($image_data){
-    $response = array();
-    $response['status']= true;
 
-        if(!$image_data['name']){
-            $response['msg']='no image is selected';
-            $response['stastus']=false;
-            $response['field']='post_img';
 
-        }
-        if($image_data['name']){
-            $image = basename($image_data['name']);
-            $type = strtolower(pathinfo($image,PATHINFO_EXTENSION));
-            $size = $image_data['size']/1000;
+// Retrieve posts from the database
+$query = "SELECT * FROM posts ORDER BY created_at DESC";
+$result = $conn->query($query);
 
-            if($type!='jpg' && $type!='jpeg' && $type!='png'){
-                $response['msg']="invalid file type";
-                $response['statu']= false;
-                $response['field'] ='profile';
-            }
-            if($size>1000){
-                $response['msg'] ="upload image less then 1 mb";
-                $response['statu']= false;
-                $response['field'] ='profile';
-            }
-        }
-        return $response ;
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "<div>";
+        echo "<h3>" . $row['caption'] . "</h3>";
+        echo "<img src='" . $row['image_path'] . "' alt='Post Image'>";
+        echo "</div>";
+    }
+} else {
+    echo "No posts found.";
 }
+
+$conn->close();
+?>
+
+
+
+

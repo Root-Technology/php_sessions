@@ -1995,11 +1995,11 @@ require_once __DIR__ . '/partials/_validations.php';
 						<br />
 
 						<img src="" style="display: none;" id="post_img">
-						<form action="./create-post.php?addpost" method="post" enctype="multipart/form-data">
-							<input type="file" name="" id="select_post_img" name="image_post"/>
+						<form action="./create-post.php" method="post" enctype="multipart/form-data">
+							<input type="file" name="" id="select_post_img" name="image" accept="image/*" />
 							<br />
-							
-							<textarea name="description_post"></textarea>
+
+							<textarea name="caption"></textarea>
 							<br />
 							<button type="submit" class="btn btn-md-2 btn-primary">Update Profile</button>
 						</form>
@@ -2816,7 +2816,7 @@ require_once __DIR__ . '/partials/_validations.php';
 	<script src="js/svg-loader.js"></script>
 	<!-- /SVG icons loader -->
 
-	<script src="js/post-img.js?v<?=time()?>"></script>
+	<script src="js/post-img.js?v<?= time() ?>"></script>
 
 </body>
 

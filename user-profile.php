@@ -2120,7 +2120,7 @@ require_once __DIR__ . '/partials/_validations.php';
 
                   <div class="form-group date-time-picker label-floating">
                     <label class="control-label">Your Birthday</label>
-                    <input name="datetimepicker" type="date" name='birthday' value="<?php echo $birthday ?>" />
+                    <input type="date" name="birthday" value="<?php echo $birthday ?>" />
                     <span class="input-group-addon">
                       <svg class="olymp-month-calendar-icon icon">
                         <use xlink:href="#olymp-month-calendar-icon"></use>
@@ -2135,10 +2135,10 @@ require_once __DIR__ . '/partials/_validations.php';
                     <input class="form-control" placeholder="" type="text" name='last_name' value="<?php echo  $lastname; ?>" />
                   </div>
 
-                  <!-- <div class="form-group label-floating">
+                  <div class="form-group label-floating">
                     <label class="control-label">Your Website</label>
-                    <input class="form-control" placeholder="" type="email" value="daydreamzagency.com" />
-                  </div> -->
+                    <input class="form-control" placeholder="" type="email" value="<?php echo $website; ?>" />
+                  </div>
 
                   <div class="form-group label-floating is-select">
                     <label class="control-label">Your Gender</label>

@@ -209,7 +209,8 @@ require_once __DIR__ . '/partials/_validations.php';
 
 								<a href="02-ProfilePage.html" class="h4 author-name"><?php echo $name . ' ' . $lastname; ?> </a>
 
-								<div class="country">San Francisco, CA</div>
+								<div class="country"><?php echo $country; ?>
+								, CA</div>
 							</div>
 						</div>
 					</div>
@@ -959,7 +960,7 @@ require_once __DIR__ . '/partials/_validations.php';
 						<ul class="widget w-personal-info item-block">
 							<li>
 								<span class="title">About Me:</span>
-								<span class="text">Hi, I’m James, I’m 36 and I work as a Digital Designer for the “Daydreams” Agency in Pier 56.</span>
+								<span class="text"><?php echo $about; ?></span>
 							</li>
 							<li>
 								<span class="title">Favourite TV Shows:</span>

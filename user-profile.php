@@ -88,7 +88,7 @@ require_once __DIR__ . '/partials/_validations.php';
                 <div class="accordion-body">
                   <ul class="your-profile-menu">
                     <li>
-                      <a href="28-YourAccount-PersonalInformation.html">Personal Information</a>
+                      <a href="user-profile.php">Personal Information</a>
                     </li>
                     <li>
                       <a href="29-YourAccount-AccountSettings.html">Account Settings</a>
@@ -2137,7 +2137,52 @@ require_once __DIR__ . '/partials/_validations.php';
 
                   <div class="form-group label-floating">
                     <label class="control-label">Your Website</label>
-                    <input class="form-control" placeholder="" type="email" value="<?php echo $website; ?>" />
+                    <input class="form-control" placeholder="" type="text" name="website" value="<?php echo $website; ?>" />
+                  </div>
+
+
+
+
+                  <div class="form-group label-floating is-empty">
+                    <label class="control-label">Your Phone Number</label>
+                    <input class="form-control" placeholder="" type="phone" name="phone" value="<?php echo $phone; ?>" />
+                  </div>
+                </div>
+
+                <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+                  <div class="form-group label-floating is-select">
+                    <label class="control-label">Your Country</label>
+                    <select class="form-select" name="country">
+                      <option value="Cyprus">Cyprus</option>
+                      <option value="US">United States</option>
+                      <option value="AU">Australia</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+                  <div class="form-group label-floating is-select">
+                    <label class="control-label">Your State / Province</label>
+                    <select class="form-select">
+                      <option value="Nicosia">Nicoisa</option>
+                      <option value="CA">California</option>
+                      <option value="TE">Texas</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
+                  <div class="form-group label-floating is-select">
+                    <label class="control-label">Your City</label>
+                    <select class="form-select">
+                      <option value="Lefkosa">Lefkosa</option>
+                      <option value="NY">New York</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                  <div class="form-group">
+                    <textarea class="form-control" placeholder="Write a little description about you" name="about">
+                      <?php echo $about ?>
+                    </textarea>
                   </div>
 
                   <div class="form-group label-floating is-select">
@@ -2149,54 +2194,6 @@ require_once __DIR__ . '/partials/_validations.php';
                   </div>
 
 
-
-                  <!-- <div class="form-group label-floating is-empty">
-                    <label class="control-label">Your Phone Number</label>
-                    <input class="form-control" placeholder="" type="text" />
-                  </div> -->
-                </div>
-
-                <!-- <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
-                  <div class="form-group label-floating is-select">
-                    <label class="control-label">Your Country</label>
-                    <select class="form-select">
-                      <option value="US">United States</option>
-                      <option value="AU">Australia</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
-                  <div class="form-group label-floating is-select">
-                    <label class="control-label">Your State / Province</label>
-                    <select class="form-select">
-                      <option value="CA">California</option>
-                      <option value="TE">Texas</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
-                  <div class="form-group label-floating is-select">
-                    <label class="control-label">Your City</label>
-                    <select class="form-select">
-                      <option value="SF">San Francisco</option>
-                      <option value="NY">New York</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                  <div class="form-group">
-                    <textarea class="form-control" placeholder="Write a little description about you">
-Hi, I’m James, I’m 36 and I work as a Digital Designer for the  “Daydreams” Agency in Pier 56</textarea>
-                  </div>
-
-                  <div class="form-group label-floating is-select">
-                    <label class="control-label">Your Gender</label>
-                    <select class="form-select">
-                      <option value="MA">Male</option>
-                      <option value="FE">Female</option>
-                    </select>
-                  </div>
-
                   <div class="form-group label-floating is-empty">
                     <label class="control-label">Religious Belifs</label>
                     <input class="form-control" placeholder="" type="text" />
@@ -2205,7 +2202,7 @@ Hi, I’m James, I’m 36 and I work as a Digital Designer for the  “Daydreams
                 <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                   <div class="form-group label-floating is-empty">
                     <label class="control-label">Your Birthplace</label>
-                    <input class="form-control" placeholder="" type="text" />
+                    <input class="form-control" type="text" name="birthplace" value="<?php echo $birthplace ?>" />
                   </div>
 
                   <div class="form-group label-floating">
@@ -2215,9 +2212,9 @@ Hi, I’m James, I’m 36 and I work as a Digital Designer for the  “Daydreams
 
                   <div class="form-group label-floating is-select">
                     <label class="control-label">Status</label>
-                    <select class="form-select">
-                      <option value="MA">Married</option>
-                      <option value="FE">Not Married</option>
+                    <select class="form-select" name="status">
+                      <option value="Married">Married</option>
+                      <option value="Not Married">Not Married</option>
                     </select>
                   </div>
 
@@ -2262,12 +2259,12 @@ Hi, I’m James, I’m 36 and I work as a Digital Designer for the  “Daydreams
                       <use xlink:href="#olymp-spotify-icon"></use>
                     </svg>
                   </div>
-                </div> -->
-                <!-- <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                  <button class="btn btn-secondary btn-lg full-width">
+                </div>
+                <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+                  <button type="reset" class="btn btn-secondary btn-lg full-width">
                     Restore all Attributes
                   </button>
-                </div> -->
+                </div>
                 <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                   <button class="btn btn-primary btn-lg full-width" type="update">
                     Save all Changes
@@ -2280,6 +2277,32 @@ Hi, I’m James, I’m 36 and I work as a Digital Designer for the  “Daydreams
           </div>
         </div>
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       <div class="col col-xl-3 order-xl-1 col-lg-3 order-lg-1 col-md-12 order-md-2 col-sm-12 col-12 responsive-display-none">
         <div class="ui-block">
@@ -2576,6 +2599,10 @@ Hi, I’m James, I’m 36 and I work as a Digital Designer for the  “Daydreams
       <use xlink:href="#olymp-back-to-top"></use>
     </svg>
   </a>
+
+
+
+
 
   <!-- JS Scripts -->
 

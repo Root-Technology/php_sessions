@@ -2162,7 +2162,7 @@ require_once __DIR__ . '/partials/_validations.php';
                 <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
                   <div class="form-group label-floating is-select">
                     <label class="control-label">Your State / Province</label>
-                    <select class="form-select">
+                    <select class="form-select" name="province">
                       <option value="Nicosia">Nicoisa</option>
                       <option value="CA">California</option>
                       <option value="TE">Texas</option>
@@ -2172,7 +2172,7 @@ require_once __DIR__ . '/partials/_validations.php';
                 <div class="col col-lg-4 col-md-4 col-sm-12 col-12">
                   <div class="form-group label-floating is-select">
                     <label class="control-label">Your City</label>
-                    <select class="form-select">
+                    <select class="form-select" name="city">
                       <option value="Lefkosa">Lefkosa</option>
                       <option value="NY">New York</option>
                     </select>
@@ -2194,11 +2194,12 @@ require_once __DIR__ . '/partials/_validations.php';
                   </div>
 
 
-                  <div class="form-group label-floating is-empty">
+                  <!-- <div class="form-group label-floating is-empty">
                     <label class="control-label">Religious Belifs</label>
                     <input class="form-control" placeholder="" type="text" />
-                  </div>
+                  </div> -->
                 </div>
+
                 <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                   <div class="form-group label-floating is-empty">
                     <label class="control-label">Your Birthplace</label>
@@ -2207,7 +2208,7 @@ require_once __DIR__ . '/partials/_validations.php';
 
                   <div class="form-group label-floating">
                     <label class="control-label">Your Occupation</label>
-                    <input class="form-control" placeholder="" type="text" value="UI/UX Designer" />
+                    <input class="form-control" placeholder="" type="text" value="<?php echo $occupation ?>" name="occupation" />
                   </div>
 
                   <div class="form-group label-floating is-select">
@@ -2218,20 +2219,21 @@ require_once __DIR__ . '/partials/_validations.php';
                     </select>
                   </div>
 
-                  <div class="form-group label-floating">
-                    <label class="control-label">Political Incline</label>
-                    <input class="form-control" placeholder="" type="text" value="Democrat" />
-                  </div>
+                  <!-- <div class="form-group label-floating">
+                        <label class="control-label">Political Incline</label>
+                        <input class="form-control" placeholder="" type="text" value="Democrat" />
+                      </div> -->
                 </div>
+
                 <div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                   <div class="form-group with-icon label-floating">
                     <label class="control-label">Your Facebook Account</label>
-                    <input class="form-control" type="text" value="www.facebook.com/james-spiegel95321" />
+                    <input class="form-control" type="text" value="<?php echo $socialLink; ?>" name="socialLink" />
                     <svg class="c-facebook" width="20" height="20">
                       <use xlink:href="#olymp-facebook-icon"></use>
                     </svg>
                   </div>
-                  <div class="form-group with-icon label-floating">
+                  <!-- <div class="form-group with-icon label-floating">
                     <label class="control-label">Your Twitter Account</label>
                     <input class="form-control" type="text" value="www.twitter.com/james_spiegelOK" />
                     <svg class="c-twitter" width="20" height="20">
@@ -2258,7 +2260,7 @@ require_once __DIR__ . '/partials/_validations.php';
                     <svg class="c-spotify" width="20" height="20">
                       <use xlink:href="#olymp-spotify-icon"></use>
                     </svg>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                   <button type="reset" class="btn btn-secondary btn-lg full-width">

@@ -10,7 +10,7 @@ if (empty($_SESSION['id_user'])) {
 }
 
 
-$name = $email = $lastname = $profileimage = $headerimage = $birthday = $degree = $phone = $countryname = $placeofbirth = $gender = $website = $phone = $about = $birthplace = $status = $country = "";
+$name = $email = $lastname = $profileimage = $headerimage = $birthday = $degree = $phone = $countryname = $placeofbirth = $gender = $website = $phone = $about = $birthplace = $status = $country = $province = $city = $occupation = $socialLink = "";
 
 $sql = "SELECT * FROM users WHERE id_user= $id_user";
 $result = $conn->query($sql);
@@ -30,6 +30,10 @@ if ($result->num_rows > 0) {
         $birthplace = $row['birthplace'];
         $status = $row['status'];
         $country = $row['country'];
+        $province = $row['province'];
+        $city = $row['city'];
+        $occupation = $row['occupation'];
+        $socialLink = $row['socialLink'];
     }
 }
 

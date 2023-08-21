@@ -14,11 +14,15 @@ if (isset($_POST)) {
         $about =mysqli_real_escape_string($conn,$_POST['about']);
         $birthplace = mysqli_real_escape_string($conn, $_POST['birthplace']);
         $status = mysqli_real_escape_string($conn, $_POST['status']);
-    $country = mysqli_real_escape_string($conn, $_POST['country']);
+        $country = mysqli_real_escape_string($conn, $_POST['country']);
+        $province = mysqli_real_escape_string($conn,$_POST['province']);
+        $city= mysqli_real_escape_string($conn ,$_POST['city']);
+        $occupation = mysqli_real_escape_string($conn, $_POST['occupation']);
+        $socialLink = mysqli_real_escape_string($conn, $_POST['socialLink']);
 
 
 
-$sql = "UPDATE users SET name='$name', last_name= '$last_name', email= '$email', birthday= '$birthday', gender= '$gender', website= '$website',  phone= '$phone', about ='$about', birthplace ='$birthplace', status= '$status', country = '$country' WHERE id_user='$id_user'";
+$sql = "UPDATE users SET name='$name', last_name= '$last_name', email= '$email', birthday= '$birthday', gender= '$gender', website= '$website',  phone= '$phone', about ='$about', birthplace ='$birthplace', status= '$status', country = '$country', province = '$province', city ='$city', occupation ='$occupation', socialLink ='$socialLink' WHERE id_user='$id_user'";
        // $sql = "UPDATE users SET name='$_POST[name]', last_name='$_POST[last_name]', email='$_POST[email]', birthday='$_POST[birthday]', gender='$_POST[gender]' WHERE id_user='$id_user'";
 
     if ($conn->query($sql) === TRUE) {

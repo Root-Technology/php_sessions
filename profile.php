@@ -145,29 +145,7 @@ require_once __DIR__ . '/partials/_validations.php';
 									</svg>
 								</a>
 
-								<!-- New post -->
-								<div class="btn btn-control bg-primary more">
-									<svg class="olymp-settings-icon">
-										<use xlink:href="#olymp-plus-icon"></use>
-									</svg>
 
-									<ul class="more-dropdown more-with-triangle triangle-bottom-right">
-										<li>
-											<a href="#" data-bs-toggle="modal" data-bs-target="#add-new-post">Update Profile Photo</a>
-										</li>
-										<li>
-											<a href="#" data-bs-toggle="modal" data-bs-target="#update-header-photo">Update Header Photo</a>
-										</li>
-										<li>
-											<a href="#" data-bs-toggle="modal" data-bs-target="#update-header-photo">New Post</a>
-										</li>
-										<li>
-											<a href="29-YourAccount-AccountSettings.html">Account Settings</a>
-										</li>
-									</ul>
-								</div>
-
-								<!-- New post -->
 
 								<div class="btn btn-control bg-primary more">
 									<svg class="olymp-settings-icon">
@@ -209,8 +187,8 @@ require_once __DIR__ . '/partials/_validations.php';
 
 								<a href="02-ProfilePage.html" class="h4 author-name"><?php echo $name . ' ' . $lastname; ?> </a>
 
-								<div class="country"><?php echo $country; ?>
-								, CA</div>
+								<div class="country"><?php echo $country . ',' . $province . ' ' . $city ?>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -220,11 +198,19 @@ require_once __DIR__ . '/partials/_validations.php';
 	</div>
 
 	<!-- ... end Top Header-Profile -->
+
+
+
+
+
+
+
+
+
 	<div class="container">
 		<div class="row">
 
 			<!-- Main Content -->
-
 			<div class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
 				<div id="newsfeed-items-grid">
 
@@ -232,6 +218,83 @@ require_once __DIR__ . '/partials/_validations.php';
 						<!-- Post -->
 
 						<article class="hentry post">
+							<!-- Comment Form  -->
+							<img src="" style="display: none;" id="post_img"> <br />
+							<form class="comment-form inline-items" action="./create-post.php" method="post" enctype="multipart/form-data">
+								<div class="post__author author vcard inline-items">
+									<img loading="lazy" src="./uploads/profile/<?php echo $profileimage; ?>" width="26" height="26" alt="author">
+									<div class="form-group with-icon-right">
+										<textarea class="form-control" placeholder="" name="caption"></textarea>
+										<div class="add-options-message">
+											<label for="select_post_img" class="options-message">
+												<svg class="olymp-camera-icon">
+													<use xlink:href="#olymp-camera-icon"></use>
+												</svg>
+											</label>
+											<input type="file" id="select_post_img" name="image" accept="image/*" style="display: none;" />
+										</div>
+									</div>
+								</div>
+								<button type="submit" class="btn btn-md-2 btn-primary">Post Comment</button>
+								<button type="reset" class="btn btn-md-2 btn-border-think c-grey btn-transparent custom-color">Cancel</button>
+							</form>
+							<style>
+								.options-message {
+									display: inline-block;
+									cursor: pointer;
+								}
+							</style>
+							<script>
+								const svgButton = document.querySelector('.options-message');
+								const fileInput = document.getElementById('select_post_img');
+
+								svgButton.addEventListener('click', function() {
+									fileInput.click(); // Simulate a click on the hidden input
+								});
+
+								fileInput.addEventListener('change', function() {
+									// Handle the file selection if needed
+									const selectedFile = this.files[0];
+									if (selectedFile) {
+										const postImg = document.getElementById('post_img');
+										postImg.src = URL.createObjectURL(selectedFile);
+										postImg.style.display = 'block';
+									}
+								});
+
+								
+								const postImg = document.getElementById('post_img');
+								const cancelButton = document.querySelector('.btn-transparent');
+
+								svgButton.addEventListener('click', function() {
+									fileInput.click(); // Simulate a click on the hidden input
+								});
+
+								fileInput.addEventListener('change', function() {
+									const selectedFile = this.files[0];
+									if (selectedFile) {
+										postImg.src = URL.createObjectURL(selectedFile);
+										postImg.style.display = 'block';
+									}
+								});
+
+								cancelButton.addEventListener('click', function() {
+									// Clear the selected file and hide the image preview
+									fileInput.value = '';
+									postImg.src = '';
+									postImg.style.display = 'none';
+								});
+							</script>
+
+
+
+
+
+
+
+
+
+							<!-- ... end Comment Form  -->
 
 							<div class="post__author author vcard inline-items">
 								<img loading="lazy" src="./uploads/profile/<?php echo $profileimage; ?>" width="26" height="26" alt="author">
@@ -777,32 +840,7 @@ require_once __DIR__ . '/partials/_validations.php';
 						<!-- ... end Comments -->
 						<a href="#" class="more-comments">View more comments <span>+</span></a>
 
-						<!-- Comment Form  -->
 
-						<form class="comment-form inline-items">
-
-							<div class="post__author author vcard inline-items">
-								<img loading="lazy" src="img/author-page.webp" width="36" height="36" alt="author">
-
-								<div class="form-group with-icon-right ">
-									<textarea class="form-control" placeholder=""></textarea>
-									<div class="add-options-message">
-										<a href="#" class="options-message" data-bs-toggle="modal" data-bs-target="#update-header-photo">
-											<svg class="olymp-camera-icon">
-												<use xlink:href="#olymp-camera-icon"></use>
-											</svg>
-										</a>
-									</div>
-								</div>
-							</div>
-
-							<button class="btn btn-md-2 btn-primary">Post Comment</button>
-
-							<button class="btn btn-md-2 btn-border-think c-grey btn-transparent custom-color">Cancel</button>
-
-						</form>
-
-						<!-- ... end Comment Form  -->
 					</div>
 					<div class="ui-block">
 						<!-- Post -->
@@ -1971,62 +2009,6 @@ require_once __DIR__ . '/partials/_validations.php';
 
 
 
-	<!-- Window-popup add post -->
-
-	<div class="modal fade" id="add-new-post" tabindex="-1" role="dialog" aria-labelledby="update-header-photo" aria-hidden="true">
-		<div class="modal-dialog window-popup update-header-photo" role="document">
-			<div class="modal-content">
-				<a href="#" class="close icon-close" data-bs-dismiss="modal" aria-label="Close">
-					<svg class="olymp-close-icon">
-						<use xlink:href="#olymp-close-icon"></use>
-					</svg>
-				</a>
-
-				<div class="modal-header">
-					<h6 class="title">New post</h6>
-				</div>
-
-				<div class="">
-					<a href="#" class="upload-photo-item-1">
-						<svg class="olymp-computer-icon">
-							<use xlink:href="#olymp-computer-icon"></use>
-						</svg>
-
-						<h6>Upload Photo</h6>
-						<br />
-
-						<img src="" style="display: none;" id="post_img">
-						<form action="./create-post.php" method="post" enctype="multipart/form-data">
-							<input type="file" name="" id="select_post_img" name="image" accept="image/*" />
-							<br />
-
-							<textarea name="caption"></textarea>
-							<br />
-							<button type="submit" class="btn btn-md-2 btn-primary">Update Profile</button>
-						</form>
-
-					</a>
-
-					<!-- <a href="#" class="upload-photo-item">
-
-						<svg class="olymp-photos-icon">
-							<use xlink:href="#olymp-photos-icon"></use>
-						</svg>
-						<h6>Upload Header Photo</h6>
-						<br />
-						<form action="update-header-image.php" method="post" enctype="multipart/form-data">
-							<input type="file" name="header_image" />
-							<br />
-							<button type="submit" class="btn btn-md-2 btn-primary">Update Header</button>
-						</form>
-					</a> -->
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<!-- ... end Window-popup Update Header Photo -->
 
 
 

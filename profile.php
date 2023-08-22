@@ -1,4 +1,5 @@
 <?php
+<?php
 
 require_once __DIR__ . '/partials/_validations.php';
 
@@ -97,7 +98,7 @@ require_once __DIR__ . '/partials/_validations.php';
                 <div class="ui-block">
                     <div class="top-header">
                         <div class="top-header-thumb"
-                            style=" background-image: url('./uploads/profile/<?php echo $coverimage; ?>')">
+                            style="background-image: url('./uploads/profile/<?php echo $profileimage; ?>');">
 
                         </div>
                         <div class="profile-section">
@@ -179,18 +180,18 @@ require_once __DIR__ . '/partials/_validations.php';
                         <div class="top-header-author">
                             <a href="02-ProfilePage.html" class="author-thumb">
                                 <?php
-								if($profileimage != NULL){ ?>
+								if ($profileimage != NULL) { ?>
                                 <img loading="lazy" src="./uploads/profile/<?php echo $profileimage; ?>" alt="author"
                                     width="124" height="124">
-                                <?php }
-								else{
-								if ($gender == 'Male') { ?>
+                                <?php } else {
+									if ($gender == 'Male') { ?>
                                 <img loading="lazy" src="https://i.ibb.co/854VS2Z/avatar5.png" alt="authorM" width="124"
                                     height="124">
                                 <?php } elseif ($gender == 'Female') { ?>
                                 <img loading="lazy" src="https://i.ibb.co/3kgHdxm/avatar2.png" alt="authorF" width="124"
                                     height="124">
-                                <?php } } ?>
+                                <?php }
+								} ?>
 
                             </a>
                             <div class="author-content">
@@ -1982,18 +1983,14 @@ require_once __DIR__ . '/partials/_validations.php';
 
                     </a>
 
-                    <a href="#" class="upload-photo-item">
+                    <a href="#" class="upload-photo-item" data-bs-toggle="modal" data-bs-target="#choose-from-my-photo">
 
                         <svg class="olymp-photos-icon">
                             <use xlink:href="#olymp-photos-icon"></use>
                         </svg>
 
-                        <h6>Upload background Photo</h6>
-                        <form action="update-background-image.php" method="post" enctype="multipart/form-data">
-                            <input type="file" name="background_image" />
-                            <br />
-                            <button type="submit" class="btn btn-md-2 btn-primary">Update</button>
-                        </form>
+                        <h6>Choose from My Photos</h6>
+                        <span>Choose from your uploaded photos</span>
                     </a>
                 </div>
             </div>

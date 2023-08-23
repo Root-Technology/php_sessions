@@ -30,3 +30,14 @@ if ($result->num_rows > 0) {
 
     $birthday_formatted = date("Y-m-d", strtotime($birthday));
 }
+
+
+function makeLinksClickable($text) {
+    // Regular expression to match URLs
+    $pattern = '/https?:\/\/[^\s<]+[^<.,:;"\')\]\s]/';
+
+    // Replace URLs with anchor tags
+    $text = preg_replace($pattern, '<a href="$0" target="_blank">$0</a>', $text);
+
+    return $text;
+}

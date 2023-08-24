@@ -9,12 +9,14 @@ if (isset($_POST)) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $birthday = mysqli_real_escape_string($conn, $_POST['birthday']);
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
-    $about = mysqli_real_escape_string($conn, $_POST['about']);
-    $website = mysqli_real_escape_string($conn, $_POST['website']);
     $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+    $about = mysqli_real_escape_string($conn, $_POST['about']);
+    
+    $website = mysqli_real_escape_string($conn, $_POST['website']);
+   
 
     $sql = "UPDATE users SET name='$name', last_name= '$last_name', email= '$email', birthday= '$birthday', 
-    gender= '$gender', about= '$about', website= '$website', phone= '$phone'
+    gender= '$gender', phone='$phone', about= '$about', website= '$website'
      WHERE id_user='$id_user'";
 
     if ($conn->query($sql) === TRUE) {

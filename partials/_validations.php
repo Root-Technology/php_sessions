@@ -10,7 +10,7 @@ if (empty($_SESSION['id_user'])) {
 }
 
 
-$name = $email = $lastname = $profileimage = $coverimage = $birthday = $degree = $phone = $countryname = $placeofbirth = $gender = $website = $about ="";
+$name = $email = $lastname = $profileimage = $coverimage = $birthday = $gender = $phone = $about  = $website ="";
 
 $sql = "SELECT * FROM users WHERE id_user= $id_user";
 $result = $conn->query($sql);
@@ -20,9 +20,9 @@ if ($result->num_rows > 0) {
         $name = $row['name'];
         $email = $row['email'];
         $lastname = $row['last_name'];
-        $birthday =  $row['birthday'];
         $profileimage = $row['profile_image'];
         $coverimage = $row['cover_image'];
+        $birthday =  $row['birthday'];
         $gender =  $row['gender'];
         $phone =  $row['phone'];
         $about =  $row['about'];

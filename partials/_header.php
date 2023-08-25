@@ -71,7 +71,8 @@
 
                             <li>
                                 <div class="author-thumb">
-                                    <img loading="lazy" src="img/avatar56-sm.webp" alt="author" width="34" height="34">
+                                    <img loading="lazy" src="./uploads/profile/<?php echo $profileimage; ?>"
+                                        alt="author" width="34" height="34">
                                 </div>
                                 <div class="notification-event">
                                     <a href="#" class="h6 notification-friend">Tony Stevens</a>
@@ -109,7 +110,8 @@
                                 </div>
                                 <div class="notification-event">
                                     You and
-                                    <a href="#" class="h6 notification-friend">Mary Jane Stark</a> just became friends. Write on
+                                    <a href="#" class="h6 notification-friend">Mary Jane Stark</a> just became friends.
+                                    Write on
                                     <a href="#" class="notification-link">her wall</a>.
                                 </div>
                                 <span class="notification-icon">
@@ -190,8 +192,10 @@
                                 </div>
                                 <div class="notification-event">
                                     <a href="#" class="h6 notification-friend">Diana Jameson</a>
-                                    <span class="chat-message-item">Hi James! It’s Diana, I just wanted to let you know that we have to reschedule...</span>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
+                                    <span class="chat-message-item">Hi James! It’s Diana, I just wanted to let you know
+                                        that we have to reschedule...</span>
+                                    <span class="notification-date"><time class="entry-date updated"
+                                            datetime="2004-07-24T18:18">4 hours ago</time></span>
                                 </div>
                                 <span class="notification-icon">
                                     <svg class="olymp-chat---messages-icon">
@@ -212,7 +216,8 @@
                                 <div class="notification-event">
                                     <a href="#" class="h6 notification-friend">Jake Parker</a>
                                     <span class="chat-message-item">Great, I’ll see you tomorrow!.</span>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
+                                    <span class="notification-date"><time class="entry-date updated"
+                                            datetime="2004-07-24T18:18">4 hours ago</time></span>
                                 </div>
                                 <span class="notification-icon">
                                     <svg class="olymp-chat---messages-icon">
@@ -232,8 +237,10 @@
                                 </div>
                                 <div class="notification-event">
                                     <a href="#" class="h6 notification-friend">Elaine Dreyfuss</a>
-                                    <span class="chat-message-item">We’ll have to check that at the office and see if the client is on board with...</span>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday at 9:56pm</time></span>
+                                    <span class="chat-message-item">We’ll have to check that at the office and see if
+                                        the client is on board with...</span>
+                                    <span class="notification-date"><time class="entry-date updated"
+                                            datetime="2004-07-24T18:18">Yesterday at 9:56pm</time></span>
                                 </div>
                                 <span class="notification-icon">
                                     <svg class="olymp-chat---messages-icon">
@@ -258,7 +265,8 @@
                                     <a href="#" class="h6 notification-friend">You, Faye, Ed &amp; Jet +3</a>
                                     <span class="last-message-author">Ed:</span>
                                     <span class="chat-message-item">Yeah! Seems fine by me!</span>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 16th at 10:23am</time></span>
+                                    <span class="notification-date"><time class="entry-date updated"
+                                            datetime="2004-07-24T18:18">March 16th at 10:23am</time></span>
                                 </div>
                                 <span class="notification-icon">
                                     <svg class="olymp-chat---messages-icon">
@@ -300,10 +308,12 @@
                                 </div>
                                 <div class="notification-event">
                                     <div>
-                                        <a href="#" class="h6 notification-friend">Mathilda Brinker</a> commented on your new
+                                        <a href="#" class="h6 notification-friend">Mathilda Brinker</a> commented on
+                                        your new
                                         <a href="#" class="notification-link">profile status</a>.
                                     </div>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
+                                    <span class="notification-date"><time class="entry-date updated"
+                                            datetime="2004-07-24T18:18">4 hours ago</time></span>
                                 </div>
                                 <span class="notification-icon">
                                     <svg class="olymp-comments-post-icon">
@@ -327,10 +337,12 @@
                                 </div>
                                 <div class="notification-event">
                                     <div>You and
-                                        <a href="#" class="h6 notification-friend">Nicholas Grissom</a> just became friends. Write on
+                                        <a href="#" class="h6 notification-friend">Nicholas Grissom</a> just became
+                                        friends. Write on
                                         <a href="#" class="notification-link">his wall</a>.
                                     </div>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">9 hours ago</time></span>
+                                    <span class="notification-date"><time class="entry-date updated"
+                                            datetime="2004-07-24T18:18">9 hours ago</time></span>
                                 </div>
                                 <span class="notification-icon">
                                     <svg class="olymp-happy-face-icon">
@@ -351,21 +363,25 @@
                             <li class="with-comment-photo-wrap">
                                 <div class="with-comment-photo">
                                     <div class="author-thumb">
-                                        <img loading="lazy" src="img/avatar64-sm.webp" width="34" height="34" alt="author">
+                                        <img loading="lazy" src="img/avatar64-sm.webp" width="34" height="34"
+                                            alt="author">
                                     </div>
                                     <div class="notification-event">
                                         <div>
-                                            <a href="#" class="h6 notification-friend">Sarah Hetfield</a> commented on your
+                                            <a href="#" class="h6 notification-friend">Sarah Hetfield</a> commented on
+                                            your
                                             <a href="#" class="notification-link">photo</a>.
                                         </div>
-                                        <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday at 5:32am</time></span>
+                                        <span class="notification-date"><time class="entry-date updated"
+                                                datetime="2004-07-24T18:18">Yesterday at 5:32am</time></span>
                                     </div>
                                     <span class="notification-icon"> <svg class="olymp-comments-post-icon">
                                             <use xlink:href="#olymp-comments-post-icon"></use>
                                         </svg> </span>
                                 </div>
                                 <div class="comment-photo">
-                                    <img loading="lazy" src="img/comment-photo1.webp" alt="photo" width="40" height="40">
+                                    <img loading="lazy" src="img/comment-photo1.webp" alt="photo" width="40"
+                                        height="40">
                                     <span>“She looks incredible in that outfit! We should see each...”</span>
                                 </div>
                                 <div class="more">
@@ -384,10 +400,12 @@
                                 </div>
                                 <div class="notification-event">
                                     <div>
-                                        <a href="#" class="h6 notification-friend">Green Goo Rock</a> invited you to attend to his event Goo in
+                                        <a href="#" class="h6 notification-friend">Green Goo Rock</a> invited you to
+                                        attend to his event Goo in
                                         <a href="#" class="notification-link">Gotham Bar</a>.
                                     </div>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 5th at 6:43pm</time></span>
+                                    <span class="notification-date"><time class="entry-date updated"
+                                            datetime="2004-07-24T18:18">March 5th at 6:43pm</time></span>
                                 </div>
                                 <span class="notification-icon">
                                     <svg class="olymp-happy-face-icon">
@@ -411,10 +429,12 @@
                                 </div>
                                 <div class="notification-event">
                                     <div>
-                                        <a href="#" class="h6 notification-friend">James Summers</a> commented on your new
+                                        <a href="#" class="h6 notification-friend">James Summers</a> commented on your
+                                        new
                                         <a href="#" class="notification-link">profile status</a>.
                                     </div>
-                                    <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 2nd at 8:29pm</time></span>
+                                    <span class="notification-date"><time class="entry-date updated"
+                                            datetime="2004-07-24T18:18">March 2nd at 8:29pm</time></span>
                                 </div>
                                 <span class="notification-icon">
                                     <svg class="olymp-heart-icon">
@@ -440,7 +460,8 @@
 
             <div class="author-page author vcard inline-items more">
                 <div class="author-thumb">
-                    <img alt="author" src="img/author-page.webp" width="36" height="36" class="avatar">
+                    <img alt="author" src="./uploads/profile/<?php echo $profileimage; ?>" width="36" height="36"
+                        class="avatar">
                     <span class="icon-status online"></span>
                     <div class="more-dropdown more-with-triangle">
                         <div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -461,7 +482,8 @@
                                 </li>
                                 <li>
                                     <a href="36-FavPage-SettingsAndCreatePopup.html">
-                                        <svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="FAV PAGE">
+                                        <svg class="olymp-star-icon left-menu-icon" data-bs-toggle="tooltip"
+                                            data-bs-placement="right" data-bs-original-title="FAV PAGE">
                                             <use xlink:href="#olymp-star-icon"></use>
                                         </svg>
 
@@ -557,7 +579,7 @@
                 </div>
                 <a href="02-ProfilePage.html" class="author-name fn">
                     <div class="author-title">
-                        James Spiegel
+                        <?php  echo $name ?>
                         <svg class="olymp-dropdown-arrow-icon">
                             <use xlink:href="#olymp-dropdown-arrow-icon"></use>
                         </svg>
@@ -581,7 +603,8 @@
     <div class="header-content-wrapper">
         <ul class="nav nav-tabs mobile-notification-tabs" id="mobile-notification-tabs" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="request-tab" data-bs-toggle="tab" href="#request" role="tab" aria-controls="request" aria-selected="false">
+                <a class="nav-link" id="request-tab" data-bs-toggle="tab" href="#request" role="tab"
+                    aria-controls="request" aria-selected="false">
                     <div class="control-icon has-items">
                         <svg class="olymp-happy-face-icon">
                             <use xlink:href="#olymp-happy-face-icon"></use>
@@ -592,7 +615,8 @@
             </li>
 
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="chat-tab" data-bs-toggle="tab" href="#chat" role="tab" aria-controls="chat" aria-selected="false">
+                <a class="nav-link" id="chat-tab" data-bs-toggle="tab" href="#chat" role="tab" aria-controls="chat"
+                    aria-selected="false">
                     <div class="control-icon has-items">
                         <svg class="olymp-chat---messages-icon">
                             <use xlink:href="#olymp-chat---messages-icon"></use>
@@ -603,7 +627,8 @@
             </li>
 
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="notification-tab" data-bs-toggle="tab" href="#notification" role="tab" aria-controls="notification" aria-selected="false">
+                <a class="nav-link" id="notification-tab" data-bs-toggle="tab" href="#notification" role="tab"
+                    aria-controls="notification" aria-selected="false">
                     <div class="control-icon has-items">
                         <svg class="olymp-thunder-icon">
                             <use xlink:href="#olymp-thunder-icon"></use>
@@ -614,7 +639,8 @@
             </li>
 
             <li class="nav-item" role="presentation">
-                <a class="nav-link" id="search-tab" data-bs-toggle="tab" href="#search" role="tab" aria-controls="search" aria-selected="false">
+                <a class="nav-link" id="search-tab" data-bs-toggle="tab" href="#search" role="tab"
+                    aria-controls="search" aria-selected="false">
                     <svg class="olymp-magnifying-glass-icon">
                         <use xlink:href="#olymp-magnifying-glass-icon"></use>
                     </svg>
@@ -783,8 +809,10 @@
                         </div>
                         <div class="notification-event">
                             <a href="#" class="h6 notification-friend">Diana Jameson</a>
-                            <span class="chat-message-item">Hi James! It’s Diana, I just wanted to let you know that we have to reschedule...</span>
-                            <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
+                            <span class="chat-message-item">Hi James! It’s Diana, I just wanted to let you know that we
+                                have to reschedule...</span>
+                            <span class="notification-date"><time class="entry-date updated"
+                                    datetime="2004-07-24T18:18">4 hours ago</time></span>
                         </div>
                         <span class="notification-icon">
                             <svg class="olymp-chat---messages-icon">
@@ -805,7 +833,8 @@
                         <div class="notification-event">
                             <a href="#" class="h6 notification-friend">Jake Parker</a>
                             <span class="chat-message-item">Great, I’ll see you tomorrow!.</span>
-                            <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
+                            <span class="notification-date"><time class="entry-date updated"
+                                    datetime="2004-07-24T18:18">4 hours ago</time></span>
                         </div>
                         <span class="notification-icon">
                             <svg class="olymp-chat---messages-icon">
@@ -825,8 +854,10 @@
                         </div>
                         <div class="notification-event">
                             <a href="#" class="h6 notification-friend">Elaine Dreyfuss</a>
-                            <span class="chat-message-item">We’ll have to check that at the office and see if the client is on board with...</span>
-                            <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday at 9:56pm</time></span>
+                            <span class="chat-message-item">We’ll have to check that at the office and see if the client
+                                is on board with...</span>
+                            <span class="notification-date"><time class="entry-date updated"
+                                    datetime="2004-07-24T18:18">Yesterday at 9:56pm</time></span>
                         </div>
                         <span class="notification-icon">
                             <svg class="olymp-chat---messages-icon">
@@ -851,7 +882,8 @@
                             <a href="#" class="h6 notification-friend">You, Faye, Ed &amp; Jet +3</a>
                             <span class="last-message-author">Ed:</span>
                             <span class="chat-message-item">Yeah! Seems fine by me!</span>
-                            <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 16th at 10:23am</time></span>
+                            <span class="notification-date"><time class="entry-date updated"
+                                    datetime="2004-07-24T18:18">March 16th at 10:23am</time></span>
                         </div>
                         <span class="notification-icon">
                             <svg class="olymp-chat---messages-icon">
@@ -889,7 +921,8 @@
                             <div><a href="#" class="h6 notification-friend">Mathilda Brinker</a> commented on your new
                                 <a href="#" class="notification-link">profile status</a>.
                             </div>
-                            <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">4 hours ago</time></span>
+                            <span class="notification-date"><time class="entry-date updated"
+                                    datetime="2004-07-24T18:18">4 hours ago</time></span>
                         </div>
                         <span class="notification-icon">
                             <svg class="olymp-comments-post-icon">
@@ -913,10 +946,12 @@
                         </div>
                         <div class="notification-event">
                             <div>You and
-                                <a href="#" class="h6 notification-friend">Nicholas Grissom</a> just became friends. Write on
+                                <a href="#" class="h6 notification-friend">Nicholas Grissom</a> just became friends.
+                                Write on
                                 <a href="#" class="notification-link">his wall</a>.
                             </div>
-                            <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">9 hours ago</time></span>
+                            <span class="notification-date"><time class="entry-date updated"
+                                    datetime="2004-07-24T18:18">9 hours ago</time></span>
                         </div>
                         <span class="notification-icon">
                             <svg class="olymp-happy-face-icon">
@@ -936,18 +971,21 @@
 
                     <li class="with-comment-photo-wrap">
                         <div class="with-comment-photo">
-                            <div class="author-thumb"><img loading="lazy" src="img/avatar64-sm.webp" width="34" height="34" alt="author"></div>
+                            <div class="author-thumb"><img loading="lazy" src="img/avatar64-sm.webp" width="34"
+                                    height="34" alt="author"></div>
                             <div class="notification-event">
                                 <div><a href="#" class="h6 notification-friend">Sarah Hetfield</a> commented on your
                                     <a href="#" class="notification-link">photo</a>.
                                 </div>
-                                <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday at 5:32am</time></span>
+                                <span class="notification-date"><time class="entry-date updated"
+                                        datetime="2004-07-24T18:18">Yesterday at 5:32am</time></span>
                             </div>
                             <span class="notification-icon"> <svg class="olymp-comments-post-icon">
                                     <use xlink:href="#olymp-comments-post-icon"></use>
                                 </svg> </span>
                         </div>
-                        <div class="comment-photo"><img loading="lazy" src="img/comment-photo1.webp" alt="photo" width="40" height="40">
+                        <div class="comment-photo"><img loading="lazy" src="img/comment-photo1.webp" alt="photo"
+                                width="40" height="40">
                             <span>“She looks incredible in that outfit! We should see each...”</span>
                         </div>
                         <div class="more">
@@ -966,10 +1004,12 @@
                         </div>
                         <div class="notification-event">
                             <div>
-                                <a href="#" class="h6 notification-friend">Green Goo Rock</a> invited you to attend to his event Goo in
+                                <a href="#" class="h6 notification-friend">Green Goo Rock</a> invited you to attend to
+                                his event Goo in
                                 <a href="#" class="notification-link">Gotham Bar</a>.
                             </div>
-                            <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 5th at 6:43pm</time></span>
+                            <span class="notification-date"><time class="entry-date updated"
+                                    datetime="2004-07-24T18:18">March 5th at 6:43pm</time></span>
                         </div>
                         <span class="notification-icon">
                             <svg class="olymp-happy-face-icon">
@@ -995,7 +1035,8 @@
                             <div><a href="#" class="h6 notification-friend">James Summers</a> commented on your new
                                 <a href="#" class="notification-link">profile status</a>.
                             </div>
-                            <span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">March 2nd at 8:29pm</time></span>
+                            <span class="notification-date"><time class="entry-date updated"
+                                    datetime="2004-07-24T18:18">March 2nd at 8:29pm</time></span>
                         </div>
                         <span class="notification-icon">
                             <svg class="olymp-heart-icon">

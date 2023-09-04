@@ -200,23 +200,43 @@ require_once __DIR__ . '/partials/_validations.php';
 
 					if ($result->num_rows > 0) {
 						while ($row =  $result->fetch_assoc()) {
+							$post_id_user = $row['post_id_user']
 					?>
 							<div class="ui-block">
 
 								<article class="hentry post has-post-thumbnail shared-photo">
 
 									<div class="post__author author vcard inline-items">
-										<img loading="lazy" src="img/author-page.webp" width="36" height="36" alt="author">
+										<?php
+										$sql1 = "SELECT * FROM users WHERE id_user = $post_id_user";
+										$result1 = $conn->query($sql1);
 
-										<div class="author-date">
-											<a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a> shared
-											<a href="#">Diana Jameson</a>’s <a href="#">photo</a>
-											<div class="post__date">
-												<time class="published" datetime="2017-03-24T18:18">
-													7 hours ago
-												</time>
-											</div>
-										</div>
+										if ($result1->num_rows > 0) {
+											while ($row1 =  $result1->fetch_assoc()) {
+												$profilephoto = $row1['profile_image'];
+												$genderprofile = $row1['gender'];
+										?>
+												<?php
+												if ($profilephoto != NULL) { ?>
+													<img loading="lazy" src="./uploads/profile/<?php echo $profilephoto ?>" alt="author" width="36" height="36">
+													<?php } else {
+													if ($genderprofile == 'Male') { ?>
+														<img loading="lazy" src="https://i.ibb.co/854VS2Z/avatar5.png" alt="authorM" width="36" height="36">
+													<?php } elseif ($genderprofile == 'Female') { ?>
+														<img loading="lazy" src="https://i.ibb.co/3kgHdxm/avatar2.png" alt="authorF" width="36" height="36">
+												<?php }
+												} ?>
+
+												<div class="author-date">
+													<a class="h6 post__author-name fn" href="02-ProfilePage.html"><?php echo $row1['name']; ?> <?php echo $row1['last_name']; ?></a>
+														<div class="post__date">
+															<time class="published" datetime="2017-03-24T18:18">
+																<?php echo get_time_ago(strtotime($row['createdAt'])); ?>
+															</time>
+														</div>
+												</div>
+										<?php }
+										} ?>
 
 										<div class="more">
 											<svg class="olymp-three-dots-icon">
@@ -365,7 +385,17 @@ require_once __DIR__ . '/partials/_validations.php';
 								<form class="comment-form inline-items">
 
 									<div class="post__author author vcard inline-items">
-										<img loading="lazy" src="img/author-page.webp" width="36" height="36" alt="author">
+										<?php
+										if ($profileimage != NULL) { ?>
+											<img loading="lazy" src="./uploads/profile/<?php echo $profileimage; ?>" alt="author" width="36" height="36">
+											<?php } else {
+											if ($gender == 'Male') { ?>
+												<img loading="lazy" src="https://i.ibb.co/854VS2Z/avatar5.png" alt="authorM" width="36" height="36">
+											<?php } elseif ($gender == 'Female') { ?>
+												<img loading="lazy" src="https://i.ibb.co/3kgHdxm/avatar2.png" alt="authorF" width="36" height="36">
+										<?php }
+										} ?>
+
 
 										<div class="form-group with-icon-right ">
 											<textarea class="form-control" placeholder=""></textarea>

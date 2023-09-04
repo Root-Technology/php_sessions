@@ -805,7 +805,7 @@ require_once __DIR__ . '/partials/_validations.php';
                                 <img loading="lazy" src="img/avatar48-sm.webp" alt="author" width="28" height="28">
                             </div>
                             <span>Today is</span>
-                            <a href="#" class="h4 title">Marina Valentine’s Birthday!</a>
+                            <a href="#" class="h4 title"><?php echo "<b>{$name} {$lastname}'s Birthday!</b>" ?></a>
                             <?php
                           $sql = "SELECT birthday FROM users WHERE id_user = $post_id_user";
                            $result = $conn->query($sql);

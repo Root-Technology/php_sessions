@@ -213,7 +213,7 @@ require_once __DIR__ . '/partials/_validations.php';
 
                 <div id="newsfeed-items-grid">
                     <?php
-					$sql = "SELECT * FROM post ORDER BY created_at DESC";
+					$sql = "SELECT * FROM post ORDER BY create_At DESC";
 					$result = $conn->query($sql);
 
 					if ($result->num_rows > 0) {

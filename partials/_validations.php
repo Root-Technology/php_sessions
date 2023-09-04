@@ -67,3 +67,20 @@ function get_time_ago($time)
         }
     }
 }
+
+function daysUntilBirthday($birthday) {
+    // Get the current date
+    $currentDate = date("Y-m-d");
+
+    // Convert the$birthday and current date to DateTime objects
+    $birthdayDate = new DateTime($birthday);
+    $currentDate = new DateTime($currentDate);
+
+    // Calculate the time difference
+    $timeDifference = $currentDate->diff($birthdayDate);
+
+    // Get the number of days left
+    $daysLeft = $timeDifference->days;
+
+    return $daysLeft;
+}

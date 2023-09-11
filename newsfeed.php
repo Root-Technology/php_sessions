@@ -195,7 +195,7 @@ require_once __DIR__ . '/partials/_validations.php';
 
 				<div id="newsfeed-items-grid">
 					<?php
-					$sql = "SELECT * FROM post ORDER BY createdAT DESC";
+					$sql = "SELECT * FROM post ORDER BY create_at DESC";
 					$result = $conn->query($sql);
 
 					if ($result->num_rows > 0) {
@@ -210,7 +210,7 @@ require_once __DIR__ . '/partials/_validations.php';
 
 										<div class="author-date">
 											<a class="h6 post__author-name fn" href="02-ProfilePage.html">James Spiegel</a> shared
-											<a href="#">Diana Jameson</a>’s <a href="#">photo</a>
+											<a href=z"#">Diana Jameson</a>’s <a href="#">photo</a>
 											<div class="post__date">
 												<time class="published" datetime="2017-03-24T18:18">
 													7 hours ago

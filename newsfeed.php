@@ -200,7 +200,8 @@ require_once __DIR__ . '/partials/_validations.php';
 
 					if ($result->num_rows > 0) {
 						while ($row =  $result->fetch_assoc()) {
-							$post_id_user = $row['post_id_user']
+							$post_id_user = $row['post_id_user'];
+							$id_post = $row['id_post'];
 					?>
 							<div class="ui-block">
 
@@ -229,11 +230,11 @@ require_once __DIR__ . '/partials/_validations.php';
 
 												<div class="author-date">
 													<a class="h6 post__author-name fn" href="02-ProfilePage.html"><?php echo $row1['name']; ?> <?php echo $row1['last_name']; ?></a>
-														<div class="post__date">
-															<time class="published" datetime="2017-03-24T18:18">
-																<?php echo get_time_ago(strtotime($row['createdAt'])); ?>
-															</time>
-														</div>
+													<div class="post__date">
+														<time class="published" datetime="2017-03-24T18:18">
+															<?php echo get_time_ago(strtotime($row['createdAt'])); ?>
+														</time>
+													</div>
 												</div>
 										<?php }
 										} ?>
@@ -296,25 +297,46 @@ require_once __DIR__ . '/partials/_validations.php';
 										?>
 										<!-- <img loading="lazy" src="img/post-photo6.webp" alt="photo" width="618" height="412"> -->
 									</div>
+									<?php
+									$sql2 = "SELECT * FROM comments, users WHERE comments.comment_id_user = users.id_user and comments.comment_post_id = $id_post ORDER BY CommentTime DESC";
+									$result2 = $conn->query($sql2);
 
+									if ($result2->num_rows > 0) {
+										while ($row2 =  $result2->fetch_assoc()) {
+											$comment = $row2['comment'];
+											$commentimage = $row2['profile_image'];
+											$commentgender = $row2['gender'];
+									?>
 
-									<ul class="children single-children">
-										<li class="comment-item">
-											<div class="post__author author vcard inline-items">
-												<img loading="lazy" src="img/avatar8-sm.webp" alt="author" width="36" height="36">
-												<div class="author-date">
-													<a class="h6 post__author-name fn" href="#">Diana Jameson</a>
-													<div class="post__date">
-														<time class="published" datetime="2017-03-24T18:18">
-															16 hours ago
-														</time>
+											<ul class="children single-children">
+												<li class="comment-item">
+													<div class="post__author author vcard inline-items">
+														<?php
+														if ($commentimage != NULL) { ?>
+															<img loading="lazy" src="./uploads/profile/<?php echo $commentimage; ?>" alt="author" width="36" height="36">
+															<?php } else {
+															if ($commentgender == 'Male') { ?>
+																<img loading="lazy" src="https://i.ibb.co/854VS2Z/avatar5.png" alt="authorM" width="36" height="36">
+															<?php } elseif ($commentgender == 'Female') { ?>
+																<img loading="lazy" src="https://i.ibb.co/3kgHdxm/avatar2.png" alt="authorF" width="36" height="36">
+														<?php }
+														} ?>
+														<div class="author-date">
+															<a class="h6 post__author-name fn" href="#"><?php echo $row2['name']; ?> <?php echo $row2['last_name']; ?></a>
+															<div class="post__date">
+																<time class="published" datetime="2017-03-24T18:18">
+																	<?php echo get_time_ago(strtotime($row2['CommentTime'])); ?>
+																</time>
+															</div>
+														</div>
 													</div>
-												</div>
-											</div>
 
-											<p>Here’s the first photo of our incredible photoshoot from yesterday. If you like it please say so and tel me what you wanna see next!</p>
-										</li>
-									</ul>
+													<p><?php echo makeLinksClickable($comment); ?></p>
+												</li>
+											</ul>
+
+									<?php }
+									} ?>
 
 									<div class="post-additional-info inline-items">
 
@@ -382,7 +404,7 @@ require_once __DIR__ . '/partials/_validations.php';
 
 								<!-- Comment Form  -->
 
-								<form class="comment-form inline-items">
+								<form class="comment-form inline-items" action="add-comment.php" method="post">
 
 									<div class="post__author author vcard inline-items">
 										<?php
@@ -398,7 +420,7 @@ require_once __DIR__ . '/partials/_validations.php';
 
 
 										<div class="form-group with-icon-right ">
-											<textarea class="form-control" placeholder=""></textarea>
+											<textarea class="form-control" placeholder="" name="comment_description"></textarea>
 											<div class="add-options-message">
 												<a href="#" class="options-message" data-bs-toggle="modal" data-bs-target="#update-header-photo">
 													<svg class="olymp-camera-icon">
@@ -408,10 +430,11 @@ require_once __DIR__ . '/partials/_validations.php';
 											</div>
 										</div>
 									</div>
+									<input type="hidden" name="comment_post_id" value="<?php echo $row['id_post']; ?>" />
 
-									<button class="btn btn-md-2 btn-primary">Post Comment</button>
+									<button type="submit" class="btn btn-md-2 btn-primary">Post Comment</button>
 
-									<button class="btn btn-md-2 btn-border-think c-grey btn-transparent custom-color">Cancel</button>
+									<button type="reset" class="btn btn-md-2 btn-border-think c-grey btn-transparent custom-color">Cancel</button>
 
 								</form>
 

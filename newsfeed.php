@@ -380,7 +380,7 @@ require_once __DIR__ . '/partials/_validations.php';
 											<br>13 more liked this
 										</div>
 
-										<div class="comments-shared">
+										<div class="comments-shared d-flex">
 											<a href="#" class="post-add-icon inline-items">
 												<svg class="olymp-speech-balloon-icon">
 													<use xlink:href="#olymp-speech-balloon-icon"></use>
@@ -388,12 +388,22 @@ require_once __DIR__ . '/partials/_validations.php';
 												<span>0</span>
 											</a>
 
-											<a href="#" class="post-add-icon inline-items">
-												<svg class="olymp-share-icon">
-													<use xlink:href="#olymp-share-icon"></use>
-												</svg>
-												<span>16</span>
-											</a>
+											<form action="add-repost.php" method="post">
+												<input type="hidden" value="<?php echo $post_id_user; ?>" name="repost_user_id" />
+												<input type="hidden" value="<?php echo $row['post_description']; ?>" name="post_description" />
+												<input type="hidden" value="<?php echo $row['post_image']; ?>" name="post_image" />
+												<input type="hidden" value="<?php echo $row['post_video']; ?>" name="post_video" />
+												<input type="hidden" value="<?php echo $row['post_yt']; ?>" name="post_yt" />
+												<button type="submit" class="post-add-icon inline-items" style="border: none; background: none;">
+
+													<svg class="olymp-share-icon">
+														<use xlink:href="#olymp-share-icon"></use>
+													</svg>
+													<span>0</span>
+												</button>
+											</form>
+
+
 										</div>
 
 									</div>

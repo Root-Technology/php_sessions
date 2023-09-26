@@ -202,21 +202,47 @@ require_once __DIR__ . '/partials/_validations.php';
 						while ($row =  $result->fetch_assoc()) {
 							$post_id_user = $row['post_id_user'];
 							$id_post = $row['id_post'];
+							$repost_user_id = $row['repost_user_id'];
 					?>
 							<div class="ui-block">
 
 								<article class="hentry post has-post-thumbnail shared-photo">
 
-									<div class="post__author author vcard inline-items">
-										<?php
-										$sql1 = "SELECT * FROM users WHERE id_user = $post_id_user";
-										$result1 = $conn->query($sql1);
 
-										if ($result1->num_rows > 0) {
-											while ($row1 =  $result1->fetch_assoc()) {
-												$profilephoto = $row1['profile_image'];
-												$genderprofile = $row1['gender'];
-										?>
+									<?php
+									$sql1 = "SELECT * FROM users WHERE id_user = $post_id_user";
+									$result1 = $conn->query($sql1);
+
+									if ($result1->num_rows > 0) {
+										while ($row1 =  $result1->fetch_assoc()) {
+											$profilephoto = $row1['profile_image'];
+											$genderprofile = $row1['gender'];
+									?>
+
+											<?php if ($repost_user_id != NULL) { ?>
+												<div class="d-flex align-items-center gap-1">
+
+													<?php
+													$sql11 = "SELECT * FROM users WHERE id_user = $repost_user_id";
+													$result11 = $conn->query($sql11);
+
+													if ($result11->num_rows > 0) {
+														while ($row11 =  $result11->fetch_assoc()) {
+
+													?>
+															<div> <?php echo $row11['name']; ?> <?php echo $row11['last_name']; ?> Reposted</div>
+
+													<?php }
+													} ?>
+
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="grey">
+														<path d="M5 10v7h10.797l1.594 2h-14.391v-9h-3l4-5 4 5h-3zm14 4v-7h-10.797l-1.594-2h14.391v9h3l-4 5-4-5h3z" />
+													</svg>
+												</div>
+												<hr />
+											<?php } ?>
+											<div class="post__author author vcard inline-items">
+
 												<?php
 												if ($profilephoto != NULL) { ?>
 													<img loading="lazy" src="./uploads/profile/<?php echo $profilephoto ?>" alt="author" width="36" height="36">
@@ -236,177 +262,192 @@ require_once __DIR__ . '/partials/_validations.php';
 														</time>
 													</div>
 												</div>
+												<br />
+
+
+
+
+												<div class="more">
+													<svg class="olymp-three-dots-icon">
+														<use xlink:href="#olymp-three-dots-icon"></use>
+													</svg>
+													<ul class="more-dropdown">
+														<li>
+															<a href="#">Edit Post</a>
+														</li>
+														<li>
+															<a href="#">Delete Post</a>
+														</li>
+														<li>
+															<a href="#">Turn Off Notifications</a>
+														</li>
+														<li>
+															<a href="#">Select as Featured</a>
+														</li>
+													</ul>
+												</div>
 										<?php }
-										} ?>
-
-										<div class="more">
-											<svg class="olymp-three-dots-icon">
-												<use xlink:href="#olymp-three-dots-icon"></use>
-											</svg>
-											<ul class="more-dropdown">
-												<li>
-													<a href="#">Edit Post</a>
-												</li>
-												<li>
-													<a href="#">Delete Post</a>
-												</li>
-												<li>
-													<a href="#">Turn Off Notifications</a>
-												</li>
-												<li>
-													<a href="#">Select as Featured</a>
-												</li>
-											</ul>
-										</div>
-
-									</div>
-
-
-
-									<p><?php echo makeLinksClickable($row['post_description']); ?></p>
-
-									<div class="post-thumb">
-										<?php
-										if ($row['post_image'] != "") {
-											echo '<img class="img-responsive pad" src="uploads/post/' . $row['post_image'] . '" alt="Photo">';
-										}
-
-										if ($row['post_video'] != "") {
-										?>
-											<div class="row">
-												<div class="col-xs-12">
-													<div class="embed-responsive embed-responsive-16by9">
-														<video src="uploads/post/<?php echo $row['post_video']; ?>" controls width="618" height="412"></video>
-													</div>
-												</div>
+									} ?>
 											</div>
-										<?php
-										}
 
-										if ($row['post_yt'] != "") {
-										?>
-											<div class="row">
-												<div class="col-xs-12">
-													<div class="embed-responsive embed-responsive-16by9">
-														<iframe src="https://www.youtube.com/embed/<?php echo $row['post_yt']; ?>?rel=0&amp;showinfo=0" width="618" height="412"></iframe>
-													</div>
-												</div>
-											</div>
-										<?php
-										}
-										?>
-										<!-- <img loading="lazy" src="img/post-photo6.webp" alt="photo" width="618" height="412"> -->
-									</div>
-									<?php
-									$sql2 = "SELECT * FROM comments, users WHERE comments.comment_id_user = users.id_user and comments.comment_post_id = $id_post ORDER BY CommentTime DESC";
-									$result2 = $conn->query($sql2);
 
-									if ($result2->num_rows > 0) {
-										while ($row2 =  $result2->fetch_assoc()) {
-											$comment = $row2['comment'];
-											$commentimage = $row2['profile_image'];
-											$commentgender = $row2['gender'];
-									?>
 
-											<ul class="children single-children">
-												<li class="comment-item">
-													<div class="post__author author vcard inline-items">
-														<?php
-														if ($commentimage != NULL) { ?>
-															<img loading="lazy" src="./uploads/profile/<?php echo $commentimage; ?>" alt="author" width="36" height="36">
-															<?php } else {
-															if ($commentgender == 'Male') { ?>
-																<img loading="lazy" src="https://i.ibb.co/854VS2Z/avatar5.png" alt="authorM" width="36" height="36">
-															<?php } elseif ($commentgender == 'Female') { ?>
-																<img loading="lazy" src="https://i.ibb.co/3kgHdxm/avatar2.png" alt="authorF" width="36" height="36">
-														<?php }
-														} ?>
-														<div class="author-date">
-															<a class="h6 post__author-name fn" href="#"><?php echo $row2['name']; ?> <?php echo $row2['last_name']; ?></a>
-															<div class="post__date">
-																<time class="published" datetime="2017-03-24T18:18">
-																	<?php echo get_time_ago(strtotime($row2['CommentTime'])); ?>
-																</time>
+											<p><?php echo makeLinksClickable($row['post_description']); ?></p>
+
+											<div class="post-thumb">
+												<?php
+												if ($row['post_image'] != "") {
+													echo '<img class="img-responsive pad" src="uploads/post/' . $row['post_image'] . '" alt="Photo">';
+												}
+
+												if ($row['post_video'] != "") {
+												?>
+													<div class="row">
+														<div class="col-xs-12">
+															<div class="embed-responsive embed-responsive-16by9">
+																<video src="uploads/post/<?php echo $row['post_video']; ?>" controls width="618" height="412"></video>
 															</div>
 														</div>
 													</div>
+												<?php
+												}
 
-													<p><?php echo makeLinksClickable($comment); ?></p>
-												</li>
-											</ul>
+												if ($row['post_yt'] != "") {
+												?>
+													<div class="row">
+														<div class="col-xs-12">
+															<div class="embed-responsive embed-responsive-16by9">
+																<iframe src="https://www.youtube.com/embed/<?php echo $row['post_yt']; ?>?rel=0&amp;showinfo=0" width="618" height="412"></iframe>
+															</div>
+														</div>
+													</div>
+												<?php
+												}
+												?>
+												<!-- <img loading="lazy" src="img/post-photo6.webp" alt="photo" width="618" height="412"> -->
+											</div>
+											<?php
+											$sql2 = "SELECT * FROM comments, users WHERE comments.comment_id_user = users.id_user and comments.comment_post_id = $id_post ORDER BY CommentTime DESC";
+											$result2 = $conn->query($sql2);
 
-									<?php }
-									} ?>
+											if ($result2->num_rows > 0) {
+												while ($row2 =  $result2->fetch_assoc()) {
+													$comment = $row2['comment'];
+													$commentimage = $row2['profile_image'];
+													$commentgender = $row2['gender'];
+											?>
 
-									<div class="post-additional-info inline-items">
+													<ul class="children single-children">
+														<li class="comment-item">
+															<div class="post__author author vcard inline-items">
+																<?php
+																if ($commentimage != NULL) { ?>
+																	<img loading="lazy" src="./uploads/profile/<?php echo $commentimage; ?>" alt="author" width="36" height="36">
+																	<?php } else {
+																	if ($commentgender == 'Male') { ?>
+																		<img loading="lazy" src="https://i.ibb.co/854VS2Z/avatar5.png" alt="authorM" width="36" height="36">
+																	<?php } elseif ($commentgender == 'Female') { ?>
+																		<img loading="lazy" src="https://i.ibb.co/3kgHdxm/avatar2.png" alt="authorF" width="36" height="36">
+																<?php }
+																} ?>
+																<div class="author-date">
+																	<a class="h6 post__author-name fn" href="#"><?php echo $row2['name']; ?> <?php echo $row2['last_name']; ?></a>
+																	<div class="post__date">
+																		<time class="published" datetime="2017-03-24T18:18">
+																			<?php echo get_time_ago(strtotime($row2['CommentTime'])); ?>
+																		</time>
+																	</div>
+																</div>
+															</div>
 
-										<a href="#" class="post-add-icon inline-items">
-											<svg class="olymp-heart-icon">
-												<use xlink:href="#olymp-heart-icon"></use>
-											</svg>
-											<span>15</span>
-										</a>
+															<p><?php echo makeLinksClickable($comment); ?></p>
+														</li>
+													</ul>
 
-										<ul class="friends-harmonic">
-											<li>
-												<a href="#">
-													<img loading="lazy" src="img/friend-harmonic5.webp" alt="friend" width="28" height="28">
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<img loading="lazy" src="img/friend-harmonic10.webp" alt="friend" width="28" height="28">
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<img loading="lazy" src="img/friend-harmonic7.webp" alt="friend" width="28" height="28">
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<img loading="lazy" src="img/friend-harmonic8.webp" alt="friend" width="28" height="28">
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													<img loading="lazy" src="img/friend-harmonic2.webp" alt="friend" width="28" height="28">
-												</a>
-											</li>
-										</ul>
+											<?php }
+											} ?>
 
-										<div class="names-people-likes">
-											<a href="#">Diana</a>, <a href="#">Nicholas</a> and
-											<br>13 more liked this
-										</div>
+											<div class="post-additional-info inline-items">
 
-										<div class="comments-shared d-flex">
-											<a href="#" class="post-add-icon inline-items">
-												<svg class="olymp-speech-balloon-icon">
-													<use xlink:href="#olymp-speech-balloon-icon"></use>
-												</svg>
-												<span>0</span>
-											</a>
-
-											<form action="add-repost.php" method="post">
-												<input type="hidden" value="<?php echo $post_id_user; ?>" name="repost_user_id" />
-												<input type="hidden" value="<?php echo $row['post_description']; ?>" name="post_description" />
-												<input type="hidden" value="<?php echo $row['post_image']; ?>" name="post_image" />
-												<input type="hidden" value="<?php echo $row['post_video']; ?>" name="post_video" />
-												<input type="hidden" value="<?php echo $row['post_yt']; ?>" name="post_yt" />
-												<button type="submit" class="post-add-icon inline-items" style="border: none; background: none;">
-
-													<svg class="olymp-share-icon">
-														<use xlink:href="#olymp-share-icon"></use>
+												<a href="#" class="post-add-icon inline-items">
+													<svg class="olymp-heart-icon">
+														<use xlink:href="#olymp-heart-icon"></use>
 													</svg>
-													<span>0</span>
-												</button>
-											</form>
+													<span>15</span>
+												</a>
+
+												<ul class="friends-harmonic">
+													<li>
+														<a href="#">
+															<img loading="lazy" src="img/friend-harmonic5.webp" alt="friend" width="28" height="28">
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<img loading="lazy" src="img/friend-harmonic10.webp" alt="friend" width="28" height="28">
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<img loading="lazy" src="img/friend-harmonic7.webp" alt="friend" width="28" height="28">
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<img loading="lazy" src="img/friend-harmonic8.webp" alt="friend" width="28" height="28">
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<img loading="lazy" src="img/friend-harmonic2.webp" alt="friend" width="28" height="28">
+														</a>
+													</li>
+												</ul>
+
+												<div class="names-people-likes">
+													<a href="#">Diana</a>, <a href="#">Nicholas</a> and
+													<br>13 more liked this
+												</div>
+
+												<div class="comments-shared d-flex">
+													<a href="#" class="post-add-icon inline-items">
+														<svg class="olymp-speech-balloon-icon">
+															<use xlink:href="#olymp-speech-balloon-icon"></use>
+														</svg>
+														<span>0</span>
+													</a>
+
+													<form action="add-repost.php" method="post">
+														<input type="hidden" value="<?php echo $post_id_user; ?>" name="post_user_id" />
+														<input type="hidden" value="<?php echo $row['post_description']; ?>" name="post_description" />
+														<input type="hidden" value="<?php echo $row['post_image']; ?>" name="post_image" />
+														<input type="hidden" value="<?php echo $row['post_video']; ?>" name="post_video" />
+														<input type="hidden" value="<?php echo $row['post_yt']; ?>" name="post_yt" />
+														<input type="hidden" value="<?php echo $row['id_post']; ?>" name="id_post_repost" />
+														<button type="submit" class="post-add-icon inline-items" style="border: none; background: none;">
+															
+															<svg class="olymp-share-icon">
+																<use xlink:href="#olymp-share-icon"></use>
+															</svg>
 
 
-										</div>
+															<?php
+															$stmt = $conn->prepare("SELECT COUNT(*) AS total FROM post WHERE id_post_repost = ?");
+															$stmt->bind_param("i", $id_post);
+															$stmt->execute();
+															$result12 = $stmt->get_result();
+															$row12 = $result12->fetch_assoc();
+															$total = $row12['total'];
+															?>
+															<span><?php echo $total; ?></span>
 
-									</div>
+														</button>
+													</form>
+
+
+												</div>
+
+											</div>
 
 
 								</article>

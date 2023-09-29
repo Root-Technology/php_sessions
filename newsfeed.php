@@ -369,12 +369,28 @@ require_once __DIR__ . '/partials/_validations.php';
 
 											<div class="post-additional-info inline-items">
 
-												<a href="#" class="post-add-icon inline-items">
-													<svg class="olymp-heart-icon">
-														<use xlink:href="#olymp-heart-icon"></use>
-													</svg>
-													<span>15</span>
-												</a>
+
+
+												<form action="add-like.php" method="post">
+													<input type="hidden" value="<?php echo $id_post; ?>" name="id_post_like" />
+													<button type="submit" class="post-add-icon inline-items" style="border: none; background: none;">
+
+														<svg class="olymp-heart-icon">
+															<use xlink:href="#olymp-heart-icon"></use>
+														</svg>
+														<?php
+														$stmt1 = $conn->prepare("SELECT COUNT(*) AS total FROM likes WHERE id_post_like = ?");
+														$stmt1->bind_param("i", $id_post);
+														$stmt1->execute();
+														$result122 = $stmt1->get_result();
+														$row122 = $result122->fetch_assoc();
+														$total1 = $row122['total'];
+														?>
+														<span><?php echo $total1; ?></span>
+
+													</button>
+
+												</form>
 
 												<ul class="friends-harmonic">
 													<li>
@@ -425,7 +441,7 @@ require_once __DIR__ . '/partials/_validations.php';
 														<input type="hidden" value="<?php echo $row['post_yt']; ?>" name="post_yt" />
 														<input type="hidden" value="<?php echo $row['id_post']; ?>" name="id_post_repost" />
 														<button type="submit" class="post-add-icon inline-items" style="border: none; background: none;">
-															
+
 															<svg class="olymp-share-icon">
 																<use xlink:href="#olymp-share-icon"></use>
 															</svg>

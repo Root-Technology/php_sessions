@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mar. 26 sep. 2023 à 20:02
+-- Généré le : ven. 29 sep. 2023 à 20:31
 -- Version du serveur :  5.7.34
 -- Version de PHP : 8.0.8
 
@@ -47,6 +47,31 @@ INSERT INTO `comments` (`id_comment`, `comment_id_user`, `comment_post_id`, `com
 (5, 2, 3, 'asdasdasda', '2023-09-12 19:12:17'),
 (6, 2, 11, 'orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n\r\nhttps://www.youtube.com/watch?v=eH-9o00quMY&ab_channel=Hollow', '2023-09-12 19:14:41'),
 (7, 1, 10, 'oka boka', '2023-09-12 19:25:09');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `likes`
+--
+
+CREATE TABLE `likes` (
+  `id_like` int(11) NOT NULL,
+  `id_user_like` int(11) DEFAULT NULL,
+  `id_post_like` int(11) DEFAULT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `likes`
+--
+
+INSERT INTO `likes` (`id_like`, `id_user_like`, `id_post_like`, `createdAt`) VALUES
+(1, 1, 28, '2023-09-29 20:27:53'),
+(2, 1, 28, '2023-09-29 20:28:11'),
+(3, 1, 28, '2023-09-29 20:28:12'),
+(4, 1, 28, '2023-09-29 20:28:14'),
+(5, 1, 27, '2023-09-29 20:29:30'),
+(6, 1, 26, '2023-09-29 20:29:33');
 
 -- --------------------------------------------------------
 
@@ -129,6 +154,12 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`id_comment`);
 
 --
+-- Index pour la table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`id_like`);
+
+--
 -- Index pour la table `post`
 --
 ALTER TABLE `post`
@@ -149,6 +180,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `comments`
   MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT pour la table `likes`
+--
+ALTER TABLE `likes`
+  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `post`

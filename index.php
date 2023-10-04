@@ -536,7 +536,7 @@
 	<script src="js/libs/ajax-pagination.min.js"></script>
 	<script src="js/libs/jquery.magnific-popup.min.js"></script>
 
-	<!-- <!-- <script src="js/main.js"></!--> --> -->
+	<!-- <!-- <script src="js/main.js"></!--> 
 	<script src="js/libs-init/libs-init.js"></script>
 
 	<script src="Bootstrap/dist/js/bootstrap.bundle.min.js"></script>

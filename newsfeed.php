@@ -4,6 +4,7 @@ require_once __DIR__ . '/partials/_validations.php';
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -710,8 +711,65 @@ require_once __DIR__ . '/partials/_validations.php';
 			<!-- Right Sidebar -->
 
 			<aside class="col col-xl-3 order-xl-3 col-lg-6 order-lg-3 col-md-6 col-sm-6 col-12">
-
 				<div class="ui-block">
+
+					<?php
+					// Function to retrieve today's and upcoming birthdays from the database
+					function getTodayAndUpcomingBirthdays($mysqli)
+					{
+						$currentDate = date('Y-m-d'); // Current date in YYYY-MM-DD format
+						$todayBirthdays = [];
+						$upcomingBirthdays = [];
+
+						$query = "SELECT name, last_name, birthday, profile_image FROM users";
+						$result = $mysqli->query($query);
+
+						if (!$result) {
+							die("Query failed: " . $mysqli->error);
+						}
+
+						while ($row = $result->fetch_assoc()) {
+							$name = $row['name'] . ' ' . $row['last_name']; // Combine first name and last name
+							$birthday = date('Y-m-d', strtotime($row['birthday'])); // Convert birthday to YYYY-MM-DD format
+
+							if ($birthday == $currentDate) {
+								$todayBirthdays[] = [
+									'name' => $name,
+									'birthday' => date('M j', strtotime($birthday)), // Format the date (e.g., "Jan 15")
+									'profile_image' => $row['profile_image'], // Profile image file path or URL
+								];
+							} else {
+								$birthdayMonthDay = date('m-d', strtotime($birthday));
+								$currentMonthDay = date('m-d', strtotime($currentDate));
+
+								if ($birthdayMonthDay >= $currentMonthDay) {
+									$upcomingBirthdays[] = [
+										'name' => $name,
+										'birthday' => date('M j', strtotime($birthday)), // Format the date (e.g., "Jan 15")
+										'profile_image' => $row['profile_image'], // Profile image file path or URL
+									];
+								}
+							}
+						}
+
+						return ['today' => $todayBirthdays, 'upcoming' => $upcomingBirthdays];
+					}
+
+					// Connect to the database
+					$mysqli = new mysqli("localhost", "root", "", "olympus");
+					if ($mysqli->connect_error) {
+						die("Connection failed: " . $mysqli->connect_error);
+					}
+
+
+					// Get today's and upcoming birthdays
+					$birthdays = getTodayAndUpcomingBirthdays($mysqli);
+
+					// Close the database connection
+					$mysqli->close();
+					?>
+
+
 
 					<!-- W-Birthsday-Alert -->
 
@@ -724,14 +782,78 @@ require_once __DIR__ . '/partials/_validations.php';
 									<use xlink:href="#olymp-three-dots-icon"></use>
 								</svg></a>
 						</div>
-
+						
 						<div class="content">
 							<div class="author-thumb">
-								<img loading="lazy" src="img/avatar48-sm.webp" alt="author" width="28" height="28">
+
+								<?php
+								// Today's birthdays
+								if (!empty($birthdays['today'])) {
+									echo "<h2 class='h4 title' style='color:white;font-weight: bold;font-size:20px;'>Today is your birthday:</h2>";
+									echo "<ul>";
+									foreach ($birthdays['today'] as $birthdayUser) {
+										$name = $birthdayUser['name'];
+										$birthday = $birthdayUser['birthday'];
+										$profileImage = $birthdayUser['profile_image'];
+
+										echo "<li>";
+										if ($profileImage != NULL) {
+											echo "<img loading='lazy' src='./uploads/profile/$profileImage' alt='$name' width='224' height='224'>";
+										} else {
+											// Handle cases where there's no profile image
+											if ($gender == 'Male') {
+												echo "<img loading='lazy' src='https://i.ibb.co/854VS2Z/avatar5.png' alt='authorM' width='224' height='224'>";
+											} elseif ($gender == 'Female') {
+												echo "<img loading='lazy' src='https://i.ibb.co/3kgHdxm/avatar2.png' alt='authorF' width='224' height='224'>";
+											}
+										}
+										echo "<br>";
+										echo "<p style='color:white'>$name's birthday is <span style='font-weight: bold; color: #ff6600;'>today ($birthday)</span></p>";
+										echo "</li>";
+									}
+									echo "</ul>";
+								}
+
+								// Upcoming birthdays
+								if (!empty($birthdays['upcoming'])) {
+									echo "<h2 class='h4 title' style='color:white;font-weight: bold;font-size:20px;'>Upcoming Birthdays:</h2>";
+									echo "<ul>";
+									foreach ($birthdays['upcoming'] as $birthdayUser) {
+										$name = $birthdayUser['name'];
+										$birthday = $birthdayUser['birthday'];
+										$profileImage = $birthdayUser['profile_image'];
+
+										echo "<li>";
+										if ($profileImage != NULL) {
+											echo "<img loading='lazy' src='./uploads/profile/$profileImage' alt='$name' width='324' height='324'>";
+										} else {
+											// Handle cases where there's no profile image
+											if ($gender == 'Male') {
+												echo "<img loading='lazy' src='https://i.ibb.co/854VS2Z/avatar5.png' alt='authorM' width='324' height='324'>";
+											} elseif ($gender == 'Female') {
+												echo "<img loading='lazy' src='https://i.ibb.co/3kgHdxm/avatar2.png' alt='authorF' width='324' height='324'>";
+											}
+										}
+										echo "<br>";
+										echo "<p style='color:white'>$name's birthday is on <span style='font-weight: bold; color: #ff6600;'>$birthday</span></p>";
+
+										echo "</li>";
+									}
+									echo "</ul>";
+								}
+
+								if (empty($birthdays['today']) && empty($birthdays['upcoming'])) {
+									echo "<p>No birthdays today or upcoming.</p>";
+								}
+								?>
+								<!-- <div class="content">
+							<div class="author-thumb"> -->
+
+									<!-- Here  -->
+
+
 							</div>
-							<span>Today is</span>
-							<a href="#" class="h4 title">Marina Valentine’s Birthday!</a>
-							<p>Leave her a message with your best wishes on her profile page!</p>
+
 						</div>
 					</div>
 
@@ -1203,6 +1325,6 @@ require_once __DIR__ . '/partials/_validations.php';
 
 </body>
 
-<!-- Mirrored from html.crumina.net/html-olympus/03-Newsfeed.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 Aug 2023 17:47:20 GMT -->
+
 
 </html>

@@ -369,28 +369,66 @@ require_once __DIR__ . '/partials/_validations.php';
 
 											<div class="post-additional-info inline-items">
 
+												<?php
+												$stmt2 = $conn->prepare("SELECT * FROM likes WHERE id_post_like = ? AND id_user_like = ? ORDER BY id_like ASC LIMIT 1");
+												$stmt2->bind_param("ii", $id_post,  $id_user);
+												$stmt2->execute();
+												$result22 = $stmt2->get_result();
+												$row22 = $result22->fetch_assoc();
+
+												$id_user_like = $row22['id_user_like'];
+												$id_post_like = $row22['id_post_like'];
+												$id_like = $row22['id_like'];
+
+												?>
+												<?php if ($id_user_like && $id_post_like) { ?>
+													<form action="delete-like.php" method="post">
+														<input type="hidden" value="<?php echo $id_like; ?>" name="id_like" />
+														<input type="hidden" value="<?php echo $id_post; ?>" name="id_post_like" />
+														<button type="submit" class="post-add-icon inline-items" style="border: none; background: none; color: #ff5e3a;">
+
+															<svg class="olymp-heart-icon" fill="#ff5e3a">
+																<use xlink:href="#olymp-heart-icon"></use>
+															</svg>
+															<?php
+															$stmt1 = $conn->prepare("SELECT COUNT(*) AS total FROM likes WHERE id_post_like = ?");
+															$stmt1->bind_param("i", $id_post);
+															$stmt1->execute();
+															$result122 = $stmt1->get_result();
+															$row122 = $result122->fetch_assoc();
+															$total1 = $row122['total'];
+															?>
+															<span><?php echo $total1; ?></span>
+
+														</button>
+
+													</form>
 
 
-												<form action="add-like.php" method="post">
-													<input type="hidden" value="<?php echo $id_post; ?>" name="id_post_like" />
-													<button type="submit" class="post-add-icon inline-items" style="border: none; background: none;">
+												<?php } else { ?>
 
-														<svg class="olymp-heart-icon">
-															<use xlink:href="#olymp-heart-icon"></use>
-														</svg>
-														<?php
-														$stmt1 = $conn->prepare("SELECT COUNT(*) AS total FROM likes WHERE id_post_like = ?");
-														$stmt1->bind_param("i", $id_post);
-														$stmt1->execute();
-														$result122 = $stmt1->get_result();
-														$row122 = $result122->fetch_assoc();
-														$total1 = $row122['total'];
-														?>
-														<span><?php echo $total1; ?></span>
 
-													</button>
+													<form action="add-like.php" method="post">
+														<input type="hidden" value="<?php echo $id_post; ?>" name="id_post_like" />
+														<button type="submit" class="post-add-icon inline-items" style="border: none; background: none;">
 
-												</form>
+															<svg class="olymp-heart-icon">
+																<use xlink:href="#olymp-heart-icon"></use>
+															</svg>
+															<?php
+															$stmt1 = $conn->prepare("SELECT COUNT(*) AS total FROM likes WHERE id_post_like = ?");
+															$stmt1->bind_param("i", $id_post);
+															$stmt1->execute();
+															$result122 = $stmt1->get_result();
+															$row122 = $result122->fetch_assoc();
+															$total1 = $row122['total'];
+															?>
+															<span><?php echo $total1; ?></span>
+
+														</button>
+
+													</form>
+												<?php } ?>
 
 												<ul class="friends-harmonic">
 													<li>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : ven. 29 sep. 2023 à 20:31
--- Version du serveur :  5.7.34
--- Version de PHP : 8.0.8
+-- Généré le : mer. 01 nov. 2023 à 20:19
+-- Version du serveur : 5.7.39
+-- Version de PHP : 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -46,7 +46,9 @@ INSERT INTO `comments` (`id_comment`, `comment_id_user`, `comment_post_id`, `com
 (4, 1, 11, 'sadasda', '2023-09-12 19:12:08'),
 (5, 2, 3, 'asdasdasda', '2023-09-12 19:12:17'),
 (6, 2, 11, 'orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n\r\nhttps://www.youtube.com/watch?v=eH-9o00quMY&ab_channel=Hollow', '2023-09-12 19:14:41'),
-(7, 1, 10, 'oka boka', '2023-09-12 19:25:09');
+(7, 1, 10, 'oka boka', '2023-09-12 19:25:09'),
+(8, 1, 27, 'kuhku', '2023-11-01 20:18:18'),
+(9, 1, 27, 'asdfs', '2023-11-01 20:18:29');
 
 -- --------------------------------------------------------
 
@@ -66,12 +68,7 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`id_like`, `id_user_like`, `id_post_like`, `createdAt`) VALUES
-(1, 1, 28, '2023-09-29 20:27:53'),
-(2, 1, 28, '2023-09-29 20:28:11'),
-(3, 1, 28, '2023-09-29 20:28:12'),
-(4, 1, 28, '2023-09-29 20:28:14'),
-(5, 1, 27, '2023-09-29 20:29:30'),
-(6, 1, 26, '2023-09-29 20:29:33');
+(5, 1, 28, '2023-11-01 20:17:15');
 
 -- --------------------------------------------------------
 
@@ -140,7 +137,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_user`, `name`, `last_name`, `email`, `profile_image`, `password`, `birthday`, `gender`, `about`, `website`, `phone`, `created_at`) VALUES
 (1, 'Nelsoniiiii', 'Root', 'franckyulquiorra@gmail.com', '64cec72f5a740.png', '$2y$10$XRicMORtuln.aLyDaVabUewvQptv/cUN9CpoKlLQRmRqi3bAl/rNe', '2023-08-01', 'Male', 'asdasd asdasd', 'ww.root.com', '+905488894886', '2023-08-01 18:50:50'),
-(2, 'Daniel', 'Kif', 'franckyulquiorra12@gmail.com', NULL, '$2y$10$FaqPrOfcFwJWhE/oeJMD5uRXistUzUVB8uF1DdyxdLEO5vV.F3A/2', '21/08/1995', 'Female', NULL, NULL, NULL, '2023-08-01 18:57:17'),
+(2, 'Daniel', 'Kif', 'franckyulquiorra12@gmail.com', NULL, '$2y$10$XRicMORtuln.aLyDaVabUewvQptv/cUN9CpoKlLQRmRqi3bAl/rNe', '21/08/1995', 'Female', NULL, NULL, NULL, '2023-08-01 18:57:17'),
 (3, 'Ulquiorra', 'Mukadi', 'franckyulquiorra112@gmail.com', NULL, '$2y$10$FaqPrOfcFwJWhE/oeJMD5uRXistUzUVB8uF1DdyxdLEO5vV.F3A/2', '21/08/1995', 'Male', NULL, NULL, NULL, '2023-08-01 18:57:17');
 
 --
@@ -179,13 +176,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `post`

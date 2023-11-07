@@ -431,36 +431,58 @@ require_once __DIR__ . '/partials/_validations.php';
 												<?php } ?>
 
 												<ul class="friends-harmonic">
-													<li>
-														<a href="#">
-															<img loading="lazy" src="img/friend-harmonic5.webp" alt="friend" width="28" height="28">
-														</a>
-													</li>
-													<li>
-														<a href="#">
-															<img loading="lazy" src="img/friend-harmonic10.webp" alt="friend" width="28" height="28">
-														</a>
-													</li>
-													<li>
-														<a href="#">
-															<img loading="lazy" src="img/friend-harmonic7.webp" alt="friend" width="28" height="28">
-														</a>
-													</li>
-													<li>
-														<a href="#">
-															<img loading="lazy" src="img/friend-harmonic8.webp" alt="friend" width="28" height="28">
-														</a>
-													</li>
-													<li>
-														<a href="#">
-															<img loading="lazy" src="img/friend-harmonic2.webp" alt="friend" width="28" height="28">
-														</a>
-													</li>
+													<?php
+													$sql3 = "SELECT * FROM likes, users WHERE likes.id_post_like = $id_post AND likes.id_user_like = users.id_user ORDER BY likes.createdAt ASC LIMIT 5";
+													$result3 = $conn->query($sql3);
+
+													if ($result3->num_rows > 0) {
+														while ($row3 =  $result3->fetch_assoc()) {
+															$profileimage = $row3['profile_image'];
+															$gender = $row3['gender'];
+													?>
+															<li>
+																<a href="#">
+
+																	<?php
+																	if ($profileimage != NULL) { ?>
+																		<img loading="lazy" src="./uploads/profile/<?php echo $profileimage; ?>" alt="friend" width="28" height="28">
+																		<?php } else {
+																		if ($gender == 'Male') { ?>
+																			<img loading="lazy" src="https://i.ibb.co/854VS2Z/avatar5.png" alt="authorM" width="28" height="28">
+																		<?php } elseif ($gender == 'Female') { ?>
+																			<img loading="lazy" src="https://i.ibb.co/3kgHdxm/avatar2.png" alt="authorF" width="28" height="28">
+																	<?php }
+																	} ?>
+																</a>
+															</li>
+
+													<?php }
+													} ?>
+
 												</ul>
 
 												<div class="names-people-likes">
-													<a href="#">Diana</a>, <a href="#">Nicholas</a> and
-													<br>13 more liked this
+													<?php
+													$sql3 = "SELECT * FROM likes, users WHERE likes.id_post_like = $id_post AND likes.id_user_like = users.id_user ORDER BY likes.createdAt DESC LIMIT 2";
+													$result3 = $conn->query($sql3);
+
+													if ($result3->num_rows > 0) {
+														while ($row3 =  $result3->fetch_assoc()) {
+															$name = $row3['name'];
+															
+													?>
+
+															<a href="#"><?php echo $name; ?> </a>,
+
+
+													<?php }
+													} ?>
+
+													<?php if($total1 > 2){ ?>
+
+													<br>+ <?php echo $total1 - 2; ?> more liked this
+
+													<?php } ?>
 												</div>
 
 												<div class="comments-shared d-flex">

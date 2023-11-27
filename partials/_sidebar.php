@@ -426,76 +426,36 @@
 
         <div class="mCustomScrollbar" data-mcs-theme="dark">
             <ul class="chat-users">
-                <li class="inline-items js-chat-open">
-                    <div class="author-thumb">
-                        <img loading="lazy" alt="author" src="img/avatar67-sm.webp" class="avatar" width="34" height="34">
-                        <span class="icon-status online"></span>
-                    </div>
-                </li>
-                <li class="inline-items js-chat-open">
-                    <div class="author-thumb">
-                        <img loading="lazy" alt="author" src="img/avatar62-sm.webp" width="34" height="34" class="avatar">
-                        <span class="icon-status online"></span>
-                    </div>
-                </li>
 
-                <li class="inline-items js-chat-open">
-                    <div class="author-thumb">
-                        <img loading="lazy" alt="author" src="img/avatar68-sm.webp" class="avatar" width="34" height="34">
-                        <span class="icon-status online"></span>
-                    </div>
-                </li>
+                <?php
+                $sql = "SELECT * FROM users where id_user !=  $id_user ";
+                $result = $conn->query($sql);
 
-                <li class="inline-items js-chat-open">
-                    <div class="author-thumb">
-                        <img loading="lazy" alt="author" src="img/avatar69-sm.webp" class="avatar" width="34" height="34">
-                        <span class="icon-status away"></span>
-                    </div>
-                </li>
+                if ($result->num_rows > 0) {
+                    while ($row =  $result->fetch_assoc()) {
+                        $profilephoto = $row['profile_image'];
+                        $genderprofile = $row['gender'];
+                ?>
+                        <li class="inline-items js-chat-open">
+                            <div class="author-thumb">
+                                <a href="./chat?id=<?php echo $row["id_user"]; ?>">
+                                    <?php
+                                    if ($profilephoto != NULL) { ?>
+                                        <img loading="lazy" src="./uploads/profile/<?php echo $profilephoto ?>" alt="author" class="avatar" width="34" height="34">
+                                        <?php } else {
+                                        if ($genderprofile == 'Male') { ?>
+                                            <img loading="lazy" src="https://i.ibb.co/854VS2Z/avatar5.png" alt="authorM" class="avatar" width="34" height="34">
+                                        <?php } elseif ($genderprofile == 'Female') { ?>
+                                            <img loading="lazy" src="https://i.ibb.co/3kgHdxm/avatar2.png" alt="authorF" class="avatar" width="34" height="34">
+                                    <?php }
+                                    } ?>
+                                    <span class="icon-status online"></span>
+                                </a>
+                            </div>
+                        </li>
+                <?php }
+                } ?>
 
-                <li class="inline-items js-chat-open">
-                    <div class="author-thumb">
-                        <img loading="lazy" alt="author" src="img/avatar70-sm.webp" class="avatar" width="34" height="34">
-                        <span class="icon-status disconected"></span>
-                    </div>
-                </li>
-                <li class="inline-items js-chat-open">
-                    <div class="author-thumb">
-                        <img alt="author" loading="lazy" src="img/avatar64-sm.webp" width="34" height="34" class="avatar">
-                        <span class="icon-status online"></span>
-                    </div>
-                </li>
-                <li class="inline-items js-chat-open">
-                    <div class="author-thumb">
-                        <img loading="lazy" alt="author" src="img/avatar71-sm.webp" class="avatar" width="34" height="34">
-                        <span class="icon-status online"></span>
-                    </div>
-                </li>
-                <li class="inline-items js-chat-open">
-                    <div class="author-thumb">
-                        <img loading="lazy" alt="author" src="img/avatar72-sm.webp" class="avatar" width="34" height="34">
-                        <span class="icon-status away"></span>
-                    </div>
-                </li>
-                <li class="inline-items js-chat-open">
-                    <div class="author-thumb">
-                        <img loading="lazy" alt="author" src="img/avatar63-sm.webp" class="avatar" width="34" height="34">
-                        <span class="icon-status status-invisible"></span>
-                    </div>
-                </li>
-                <li class="inline-items js-chat-open">
-                    <div class="author-thumb">
-                        <img loading="lazy" alt="author" src="img/avatar72-sm.webp" class="avatar" width="34" height="34">
-                        <span class="icon-status away"></span>
-                    </div>
-                </li>
-                <li class="inline-items js-chat-open">
-
-                    <div class="author-thumb">
-                        <img loading="lazy" alt="author" src="img/avatar71-sm.webp" class="avatar" width="34" height="34">
-                        <span class="icon-status online"></span>
-                    </div>
-                </li>
             </ul>
         </div>
 
